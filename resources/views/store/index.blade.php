@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('store.layouts.main')
 @section('content')
 <!-- Carousel Start -->
 <div id="header-carousel" class="carousel slide" data-ride="carousel">
