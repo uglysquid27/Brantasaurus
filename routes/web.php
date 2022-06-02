@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,3 +24,5 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/detail', 'detail');
     Route::get('/contact', 'contact');
 });
+
+Route::resource('/profile', UserController::class)->middleware('auth');

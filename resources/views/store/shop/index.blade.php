@@ -1,4 +1,4 @@
-@extends('layouts.main')
+@extends('store.layouts.main')
 @section('content')
 <!-- Page Header Start -->
 <div class="container-fluid bg-secondary mb-5">
