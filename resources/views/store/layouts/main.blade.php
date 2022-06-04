@@ -121,23 +121,28 @@
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
-                            <a href="contact" class="nav-item nav-link {{ Request::is('contact') ? 'active' : ''}}">Contact</a>
+                            <a href="contact"
+                                class="nav-item nav-link {{ Request::is('contact') ? 'active' : ''}}">Contact</a>
                         </div>
                         <div class="navbar-nav ml-auto py-0">
                             @if (Route::has('login'))
                             @auth
                             <div class="nav-item dropdown">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->name }}</a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{
+                                    Auth::user()->name }}</a>
                                 <div class="dropdown-menu rounded-0 m-0">
+                                    @can('admin')
+                                    <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                                    @endcan
+                                    <a href="/profile" class="dropdown-item">Profile</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
-
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
-                                    <a href="/profile" class="dropdown-item">Profile</a>
+
                                 </div>
                             </div>
                             @else
@@ -261,4 +266,5 @@
     <!-- Template Javascript -->
     <script src="assets/js/main.js"></script>
 </body>
+
 </html>
