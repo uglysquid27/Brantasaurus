@@ -53,16 +53,7 @@
                     </div>
                 </form>
             </div>
-            <div class="col-lg-3 col-6 text-right">
-                <a href="" class="btn border">
-                    <i class="fas fa-heart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-                <a href="" class="btn border">
-                    <i class="fas fa-shopping-cart text-primary"></i>
-                    <span class="badge">0</span>
-                </a>
-            </div>
+           
             @endif
         </div>
     </div>
@@ -86,7 +77,7 @@
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                                 <div class="dropdown-menu rounded-0 m-0">
-                                    <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                    <a href="cart.html" class="dropdown-item"></a>
                                     <a href="checkout.html" class="dropdown-item">Checkout</a>
                                 </div>
                             </div>
@@ -115,11 +106,24 @@
                                 </div>
                             </div>
                             @else
-                            <a href="{{ route('login') }}" class="nav-item nav-link">Log in</a>
+                            {{-- <a href="{{ route('login') }}" class="nav-item nav-link">Log in</a>
 
                             @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
-                            @endif
+                            @endif --}}
+                            <div class="col-lg-3 col-6 text-right">
+                                <a href="" class="btn border">
+                                    <i class="fas fa-heart text-primary"></i>
+                                    <span class="badge">0</span>
+                                </a>
+                            </div>
+                            <div class="col-lg-3 col-6 text-right">
+                                <a href="" class="btn border">
+                                    <i class="fas fa-shopping-cart text-primary"></i>
+                                    <span class="badge">0</span>
+                                </a>
+                            </div>
+                            
                             @endauth
                             @endif
                         </div>
