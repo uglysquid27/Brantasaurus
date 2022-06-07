@@ -52,13 +52,37 @@
                 <!-- Deactive -->
                 <div class="">
                     <div class="mx-4 mb-3 d-flex flex-column">
-                        <form action="/profile/{{ auth()->user()->id }}" method="POST" class="d-inline">
-                            @method('delete')
-                            @csrf
-                            <button type="submit" class="btn btn-outline-danger" style="width: 150px;" onclick="return confirm('Are you sure want to delete your account?')" data-mdb-ripple-color="dark"
-                                style="z-index: 1;">
-                                Deactive
-                            </button>
+                        <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                            style="width: 150px; z-index:1;" data-target="#exampleModal" data-mdb-ripple-color="dark"
+                            style="z-index: 1;">
+                            Deactive
+                        </button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Deactive</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Are you sure want to delete your account?
+                                        If you click YES it will make you can't use this account again!!!
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/profile/{{ auth()->user()->id }}" method="POST" class="d-inline">
+                                            @method('delete')
+                                            @csrf
+                                            <button type="submit" class="btn btn-primary">YES</button>
+                                            <button type="submit" class="btn btn-secondary"
+                                                data-dismiss="modal">NO</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                         </form>
                     </div>
                 </div>
