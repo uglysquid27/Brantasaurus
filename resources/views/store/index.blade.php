@@ -4,18 +4,18 @@
 <div id="header-carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" style="height: 500px;">
-            <img class="img-fluid" src="assets/img/carousel-1.jpg" alt="Image">
+            <img class="img-fluid" src="assets/img/twsc.png" alt="Image">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 700px;">
                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
                         Order</h4>
-                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Fashionable Dress</h3>
+                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Get Your Album Now!</h3>
                     <a href="" class="btn btn-light py-2 px-3">Shop Now</a>
                 </div>
             </div>
         </div>
         <div class="carousel-item" style="height: 500px;">
-            <img class="img-fluid" src="assets/img/carousel-2.jpg" alt="Image">
+            <img class="img-fluid" src="assets/img/sujuls.webp" alt="Image">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 700px;">
                     <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
@@ -41,7 +41,8 @@
 
 <!-- Featured Start -->
 <div class="container-fluid pt-5">
-    <div class="row px-xl-5 pb-3">
+    <h1 class="text-center">CATEGORIES</h1>
+    {{-- <div class="row px-xl-5 pb-3">
         <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
             <div class="d-flex align-items-center border mb-4" style="padding: 30px;">
                 <h1 class="fa fa-check text-primary m-0 mr-3"></h1>
@@ -66,7 +67,7 @@
                 <h5 class="font-weight-semi-bold m-0">24/7 Support</h5>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 <!-- Featured End -->
 
