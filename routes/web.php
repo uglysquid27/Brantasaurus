@@ -26,7 +26,7 @@ Auth::routes();
 
 Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
-    Route::get('/shop', 'shop');
+    Route::get('/shop', 'shop')->name('shop');
     Route::get('/detail', 'detail');
     Route::get('/contact', 'contact');
 });

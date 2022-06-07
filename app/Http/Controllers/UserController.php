@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image as Images;
 
 class UserController extends Controller
 {
@@ -14,7 +17,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('store.profile.index',[
+        return view('store.profile.index', [
             'user' => User::all()
         ]);
     }
@@ -59,7 +62,7 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('store.profile.edit',[
+        return view('store.profile.edit', [
             'user' => $user,
         ]);
     }
@@ -73,7 +76,25 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        //
+        $rules = [
+            'name' => 'required|max:255',
+            'username' => 'required',
+            'image' =>'image|file|max:1024',
+            'email' => 'required',
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('image')) {
+            if ($request->oldImage) {
+                Storage::delete($request->oldImage);
+            }
+            $validateData['image'] = $request->file('image')->store('photo-profile');         
+        }
+
+        User::where('id', auth()->user()->id)
+            ->update($validateData);
+        return redirect('/profile')->with('success', 'Profile Succesful Update');
     }
 
     /**
@@ -84,6 +105,11 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
-        //
+        if (auth()->user()->image) {
+            Storage::delete(auth()->user()->image);
+        }
+        User::destroy(auth()->user()->id);
+        Auth::logout();
+        return redirect('/')->with('success','Account Successfull Delete');
     }
 }

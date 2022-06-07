@@ -4,21 +4,29 @@
     <div class="row d-flex justify-content-center align-items-center">
         <div class="col col-lg-9">
             <div class="card">
-                <div class="rounded-top text-white d-flex flex-row bg-primary" style="height:200px;">
+                <!-- Image, Name, USername -->
+                <div class="rounded-top text-white d-flex flex-row bg-primary field-content" style="height:200px;">
                     <div class="mx-4 mt-5 d-flex flex-column" style="width: 150px;">
-                        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-profiles/avatar-1.webp"
-                            alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
-                            style="width: 150px; z-index: 1">
-                        <button type="button" class="btn btn-outline-dark" data-mdb-ripple-color="dark"
+                        @if(auth()->user()->image)
+                        <img src="{{ asset('storage/'.auth()->user()->image) }}" alt="Generic placeholder image"
+                            class="img-fluid img-thumbnail mt-4 mb-2 thumb-img"
+                            style="z-index: 1; width: 150px; height: 150px">
+                        @else
+                        <img src="/assets/img/photo-profile.jpg" alt="Generic placeholder image"
+                            class="img-fluid img-thumbnail mt-4 mb-2 thumb-img"
+                            style="z-index: 1; width: 150px; height: 150px">
+                        @endif
+                        <button type="button" class="btn btn-outline-dark mt-3" data-mdb-ripple-color="dark"
                             style="z-index: 1;">
-                            <a href="/profile/{{ auth()->user()->id }}/edit" class="text-primary">Edit profile</a>
+                            <a href="/profile/{{ auth()->user()->username }}/edit" class="text-primary">Edit profile</a>
                         </button>
                     </div>
                     <div class="ms-3" style="margin-top: 130px;">
                         <h5>{{ auth()->user()->name }}</h5>
-                        <p>New York</p>
+                        <p>{{ auth()->user()->username }}</p>
                     </div>
                 </div>
+                <!-- History and Review -->
                 <div class="p-4 text-black mb-3" style="background-color: #f8f9fa;">
                     <div class="d-flex justify-content-end text-center py-1">
                         <div class="mx-3">
@@ -41,16 +49,38 @@
                         </div>
                     </div>
                 </div> -->
+                <!-- Deactive -->
                 <div class="">
-                    <div class="mx-4 mb-3 d-flex flex-column" style="width: 150px;">
-                        <button type="button" class="btn btn-outline-danger" data-mdb-ripple-color="dark"
-                            style="z-index: 1;">
-                            Deactive
-                        </button>
+                    <div class="mx-4 mb-3 d-flex flex-column">
+                        <form action="/profile/{{ auth()->user()->id }}" method="POST" class="d-inline">
+                            @method('delete')
+                            @csrf
+                            <button type="submit" class="btn btn-outline-danger" style="width: 150px;" onclick="return confirm('Are you sure want to delete your account?')" data-mdb-ripple-color="dark"
+                                style="z-index: 1;">
+                                Deactive
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<script>
+    $('#image').ijaboCropTool({
+        preview: '',
+        setRatio: 1,
+        allowedExtensions: ['jpg', 'jpeg', 'png'],
+        buttonsText: ['CROP', 'QUIT'],
+        buttonsColor: ['#30bf7d', '#ee5155', -15],
+
+        withCSRF: ['_token', '{{ csrf_token() }}'],
+        onSuccess: function(message, element, status) {
+            alert(message);
+        },
+        onError: function(message, element, status) {
+            alert(message);
+        }
+    });
+</script>
 @endsection
