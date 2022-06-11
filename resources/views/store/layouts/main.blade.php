@@ -5,11 +5,10 @@
     <meta charset="utf-8">
     <title>K-Merch Store</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="Free HTML Templates" name="keywords">
-    <meta content="Free HTML Templates" name="description">
+    {{-- <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description"> --}}
 
-    <!-- Favicon -->
-    <link href="assets/img/favicon.ico" rel="icon">
+    <link rel="icon" type="image/png" href="/assets/img/KmerchLogo.png">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -35,8 +34,7 @@
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a href="" class="text-decoration-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><span
-                        class="text-primary font-weight-bold border px-3 mr-1">K</span>Merch</h1>
+                <h1 class="m-0 display-5 font-weight-semi-bold"><img src="/assets/img/KmerchLogo.png" width="100" height="100"> Merch</h1>
             </a>
         </div>
         @if(Request::is('login') OR Route::is('register'))
