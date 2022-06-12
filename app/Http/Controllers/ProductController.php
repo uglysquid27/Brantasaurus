@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -26,7 +27,8 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return view('dashboard.product.create');
+        $categories = Category::all();
+        return view('dashboard.product.create', compact('categories'));
     }
 
     /**
@@ -38,6 +40,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $validateData = $request ->validate([
+            'category_id' =>'required',
             'product_name' => 'required|max:255',
             // 'category' => 'required',
             'slug' => 'required|unique:products',
@@ -77,7 +80,8 @@ class ProductController extends Controller
     public function edit(Product $product)
     {
         return view('dashboard.product.edit', [
-            'product' => $product
+            'product' => $product,
+            'categories' => Category::all(),
         ]);
     }
 
@@ -91,6 +95,7 @@ class ProductController extends Controller
     public function update(Request $request, Product $product)
     {
         $rules = [
+            'category_id' => 'required',
             'product_name' => 'required|max:255',
             // 'category' => 'required',
             'quantity' => 'required',

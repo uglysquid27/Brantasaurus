@@ -39,6 +39,8 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Product Name</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Category</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Quantity</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Price</th>
@@ -63,6 +65,9 @@
                                                 <p class="text-xs text-secondary mb-0">{{ $product->slug }}</p>
                                             </div>
                                         </div>
+                                    </td>
+                                    <td>
+                                        <p class="text-md text-secondary mb-0">{{ $product->category->name }}</p>
                                     </td>
                                     <td>
                                         <p class="text-md text-secondary mb-0">{{ $product->quantity }}</p>

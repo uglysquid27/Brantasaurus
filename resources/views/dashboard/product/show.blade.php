@@ -12,7 +12,9 @@
                 <div class="card-body">
                     <div class="">
                         <h6 class="my-1">Product Name</h6>
-                        <p>{{ $product->name }}</p>
+                        <p>{{ $product->product_name }}</p>
+                        <h6 class="my-1">Category Product</h6>
+                        <p>{{ $product->category->name }}</p>
                         <h6 class="my-1">Product Quantity</h6>
                         <p>{{ $product->quantity }}</p>
                         <h6 class="my-1">Product Price</h6>

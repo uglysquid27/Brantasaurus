@@ -20,4 +20,8 @@ class Category extends Model
     {
         return 'slug';
     }
+
+    public function product(){
+        return $this->hasMany(Product::class);
+    }
 }

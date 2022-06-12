@@ -33,6 +33,16 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Category Name</label>
+                                    <select class="form-control" name="category_id">
+                                        @foreach($categories as $category)
+                                        <option value ={{ $category->id }}>{{ $category->name }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Quantity</label>
                                     <input class="form-control" type="text" name="quantity"
                                         value="{{old('slug',$product->quantity)}}">
