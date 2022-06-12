@@ -28,6 +28,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //product
     Route::resource('/dashboard/product', ProductController::class);
+
+    //Profile
+    Route::resource('/dashboard/profile', UserController::class);
 });
 
 Auth::routes();
