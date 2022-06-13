@@ -22,7 +22,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::all();
+        $products = Product::select('*')->latest()->take(4)->get();
         $categories = Category::withCount('product')->get();
         return view('store.index', compact('products', 'categories'));
     }
