@@ -21,31 +21,23 @@
         <div class="col-lg-5 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
-                    <div class="carousel-item active">
-                        <img class="w-100 h-100" src="img/product-1.jpg" alt="Image">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="img/product-2.jpg" alt="Image">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="img/product-3.jpg" alt="Image">
-                    </div>
-                    <div class="carousel-item">
-                        <img class="w-100 h-100" src="img/product-4.jpg" alt="Image">
+                    <div class="">
+                        <img class="img-fluid center-block d-block mx-auto"
+                            src="{{ asset('storage/'.$products->image) }}" alt="Image" style="height: 500px;">
                     </div>
                 </div>
-                <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
+                <!-- <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
                     <i class="fa fa-2x fa-angle-left text-dark"></i>
                 </a>
                 <a class="carousel-control-next" href="#product-carousel" data-slide="next">
                     <i class="fa fa-2x fa-angle-right text-dark"></i>
-                </a>
+                </a> -->
             </div>
         </div>
 
         <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
-            <div class="d-flex mb-3">
+            <h3 class="font-weight-semi-bold"> {{ $products->product_name }} </h3>
+            <!-- <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
                     <small class="fas fa-star"></small>
@@ -54,13 +46,15 @@
                     <small class="far fa-star"></small>
                 </div>
                 <small class="pt-1">(50 Reviews)</small>
-            </div>
-            <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-            <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea.
-                Sanc invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus
-                labore stet, est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.
-            </p>
-            <div class="d-flex mb-3">
+            </div> -->
+            <h3 class="font-weight-semi-bold mb-4 text-primary">Rp. {{ $products->price }} </h3>
+            <p>{{ $products->description }} <a href="#desc">Read More</a></p>
+            
+            @foreach($products->tag as $tag)
+            <a href="/shop?tag={{ $tag->slug }}" class="mb-4"> {{ $tag->name }} 
+            </a>
+            @endforeach
+            <!-- <div class="d-flex mb-3">
                 <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
                 <form>
                     <div class="custom-control custom-radio custom-control-inline">
@@ -109,7 +103,7 @@
                         <label class="custom-control-label" for="color-5">Green</label>
                     </div>
                 </form>
-            </div>
+            </div> -->
             <div class="d-flex align-items-center mb-4 pt-2">
                 <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
@@ -154,18 +148,8 @@
             </div>
             <div class="tab-content">
                 <div class="tab-pane fade show active" id="tab-pane-1">
-                    <h4 class="mb-3">Product Description</h4>
-                    <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt
-                        duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur
-                        invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet
-                        rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam
-                        consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam,
-                        ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr
-                        sanctus eirmod takimata dolor ea invidunt.</p>
-                    <p>Dolore magna est eirmod sanctus dolor, amet diam et eirmod et ipsum. Amet dolore tempor
-                        consetetur sed lorem dolor sit lorem tempor. Gubergren amet amet labore sadipscing clita clita
-                        diam clita. Sea amet et sed ipsum lorem elitr et, amet et labore voluptua sit rebum. Ea erat sed
-                        et diam takimata sed justo. Magna takimata justo et amet magna et.</p>
+                    <h4 class="mb-3" id="desc">Product Description</h4>
+                    <p> {{ $products->description }} </p>
                 </div>
                 <div class="tab-pane fade" id="tab-pane-2">
                     <h4 class="mb-3">Additional Information</h4>
@@ -272,7 +256,7 @@
 
 
 <!-- Products Start -->
-<div class="container-fluid py-5">
+<!-- <div class="container-fluid py-5">
     <div class="text-center mb-4">
         <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
     </div>
@@ -372,6 +356,6 @@
             </div>
         </div>
     </div>
-</div>
+</div> -->
 <!-- Products End -->
 @endsection

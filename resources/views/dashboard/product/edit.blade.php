@@ -64,18 +64,24 @@
                                     @endforeach
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Quantity</label>
                                     <input class="form-control" type="text" name="quantity"
-                                        value="{{old('slug',$product->quantity)}}">
+                                        value="{{old('quantity',$product->quantity)}}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Price</label>
                                     <input class="form-control" type="text" name="price"
-                                        value="{{old('slug',$product->price)}}">
+                                        value="{{old('price',$product->price)}}">
+                                </div>
+                            </div>
+                            <div class="col-md-4 mb-3">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Selling Price</label>
+                                    <input class="form-control" type="text" name="sell_price" value="{{old('sell_price',$product->sell_price)}}">
                                 </div>
                             </div>
                             <div class="col-md-12">

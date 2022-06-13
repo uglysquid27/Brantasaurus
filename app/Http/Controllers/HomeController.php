@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\Product;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -20,18 +22,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('store.index');
+        $products = Product::all();
+        $categories = Category::withCount('product')->get();
+        return view('store.index', compact('products', 'categories'));
     }
     public function shop()
-    {
-        return view('store.shop.index');
+    {       
+        $products = Product::latest()->filter(request(['search', 'category', 'tag']))->get();
+        $categories = Category::withCount('product')->get();
+        return view('store.shop.index', compact('products', 'categories'));
     }
     public function contact()
     {
-        return view('store.contact');
+        $products = Product::all();
+        $categories = Category::withCount('product')->get();
+        return view('store.contact', compact('products', 'categories'));
     }
-    public function detail()
+
+    public function detail(Product $product)
     {
-        return view('store.shop.detail');
+        return view('store.shop.detail', [
+            'products' => $product,
+            'categories' => Category::all()
+        ]);
     }
 }
