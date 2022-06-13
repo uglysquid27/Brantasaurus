@@ -17,12 +17,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('category_id');
             $table->string('product_name');
-            // $table->string('category');
-            // $table->string('category_id');
             $table->string('slug');
             $table->integer('quantity');
             $table->integer('price');
-            $table->string('description');
+            $table->integer('sell_price');
+            $table->text('description');
+            $table->text('small_description');
             $table->string('image');
             $table->timestamps();
         });

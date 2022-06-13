@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tag;
 use Illuminate\Http\Request;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class TagController extends Controller
 {
@@ -103,5 +104,10 @@ class TagController extends Controller
     {
         Tag::destroy($tag->id);
         return redirect('/dashboard/tags')->with('success', 'Tag Succesful Delete');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Tag::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }

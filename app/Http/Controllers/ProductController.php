@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\Tag;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class ProductController extends Controller
 {
@@ -41,12 +43,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        
         $validateData = $request ->validate([
             'category_id' =>'required',
             'product_name' => 'required|max:255',
             'slug' => 'required|unique:products',
             'quantity' => 'required',
             'price' => 'required',
+            'sell_price' => 'required',
             'description' => 'required',
             'image' =>'image|file|max:1024',
             'tag' =>'required',
@@ -55,6 +59,8 @@ class ProductController extends Controller
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('Product');
         }
+
+        $validateData['small_description'] = Str::limit(strip_tags($request->description), 200);
 
         Product::create($validateData)->tag()->attach($request->tag);
         return redirect('/dashboard/product')->with('success', 'New Product Succesful Added');
@@ -103,15 +109,20 @@ class ProductController extends Controller
         $rules = [
             'category_id' => 'required',
             'product_name' => 'required|max:255',
-            // 'category' => 'required',
             'quantity' => 'required',
             'price' => 'required',
+            'sell_price' => 'required',
             'description' => 'required',
             'image' =>'image|file|max:1024',
         ];
 
+        if ($request->slug != $product->slug) {
+            $rules['slug'] = 'required|unique:products';
+        }
 
         $validateData = $request->validate($rules);
+
+        $validateData['small_description'] = Str::limit(strip_tags($request->description), 200);
 
         if ($request->file('image')) {
             if ($request->oldImage) {
@@ -119,7 +130,7 @@ class ProductController extends Controller
             }
             $validateData['image'] = $request->file('image')->store('Product');
         }
-
+        
         Product::where('id', $product->id)
             ->update($validateData);
         $product->tag()->sync($request->tag);
@@ -139,5 +150,10 @@ class ProductController extends Controller
         }
         Product::destroy($product->id);
         return redirect('/dashboard/product')->with('success', 'Product Succesful Delete');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Product::class, 'slug', $request->product_name);
+        return response()->json(['slug' => $slug]);
     }
 }

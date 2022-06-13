@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Cviebrock\EloquentSluggable\Services\SlugService;
 
 class CategoryController extends Controller
 {
@@ -124,5 +125,10 @@ class CategoryController extends Controller
         }
         Category::destroy($category->id);
         return redirect('/dashboard/category')->with('success', 'Category Succesful Delete');
+    }
+
+    public function checkSlug(Request $request){
+        $slug = SlugService::createSlug(Category::class, 'slug', $request->name);
+        return response()->json(['slug' => $slug]);
     }
 }
