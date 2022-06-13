@@ -41,12 +41,11 @@
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Category</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        Tag</th>
+                                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Quantity</th>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Price</th>
-                                    <th
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Description</th>
                                     <th
                                         class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                         Image</th>
@@ -70,13 +69,19 @@
                                         <p class="text-md text-secondary mb-0">{{ $product->category->name }}</p>
                                     </td>
                                     <td>
+                                        <p class="text-md text-secondary mb-0">
+                                            @forelse($product->tag as $tag)
+                                            <span class="badge bg-secondary"> {{ $tag->name }} </span>
+                                            @empty
+                                            <p>No Tags</p>
+                                            @endforelse
+                                        </p>
+                                    </td>
+                                    <td>
                                         <p class="text-md text-secondary mb-0">{{ $product->quantity }}</p>
                                     </td>
                                     <td>
                                         <p class="text-md text-secondary mb-0">Rp. {{ $product->price }}</p>
-                                    </td>
-                                    <td>
-                                        <p class="text-md text-secondary mb-0">{{ $product->description }}</p>
                                     </td>
                                     <td class="align-middle text-center text-sm">
                                         <img class="img-fluid mt-3" src="{{ asset('storage/'.$product->image) }}"

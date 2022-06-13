@@ -15,6 +15,12 @@
                         <p>{{ $product->product_name }}</p>
                         <h6 class="my-1">Category Product</h6>
                         <p>{{ $product->category->name }}</p>
+                        <h6 class="my-1">Tag Product</h6>
+                        <p>@forelse($product->tag as $tag)
+                            <span class="badge bg-secondary"> {{ $tag->name }} </span>
+                            @empty
+                        <p>No Tags</p>
+                        @endforelse</p>
                         <h6 class="my-1">Product Quantity</h6>
                         <p>{{ $product->quantity }}</p>
                         <h6 class="my-1">Product Price</h6>

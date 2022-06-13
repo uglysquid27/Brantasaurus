@@ -22,6 +22,15 @@
                 </a>
             </li>
             <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : ''}}" href="{{ '/dashboard/product' }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
+                        <i class="fas fa-archive text-info text-sm opacity-10" aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Product List</span>
+                </a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : ''}}" href="{{ '/dashboard/category' }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
@@ -31,14 +40,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : ''}}" href="{{ '/dashboard/product' }}">
+                <a class="nav-link {{ Request::is('dashboard/tags*') ? 'active' : ''}}" href="{{ '/dashboard/tags' }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
-                        <i class="fas fa-archive text-info text-sm opacity-10" aria-hidden="true"></i>
+                        <i class="fa fa-tags text-secondary text-sm opacity-10" aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Product List</span>
+                    <span class="nav-link-text ms-1">Tag List</span>
                 </a>
-            </li>
+            </li>            
             <li class="nav-item">
                 <a class="nav-link " href="#">
                     <div

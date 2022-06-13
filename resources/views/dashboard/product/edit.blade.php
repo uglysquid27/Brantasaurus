@@ -31,7 +31,7 @@
                                         value="{{old('slug',$product->slug)}}">
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Category Name</label>
                                     <select class="form-control" name="category_id">
@@ -43,6 +43,25 @@
                                         @endif
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label d-flex mb-2">Tag Product</label>
+                                    @foreach($product->tag as $tag)
+                                    <div class="form-check form-check-inline">                              
+                                        <input class="form-check-input" name="tag[]" type="checkbox"
+                                            value="{{ $tag->id }}" checked>
+                                        <label class="form-check-label">{{ $tag->name }}</label>                                        
+                                    </div>
+                                    @endforeach
+                                    @foreach($diff as $tag)
+                                    <div class="form-check form-check-inline">                              
+                                        <input class="form-check-input" name="tag[]" type="checkbox"
+                                            value="{{ $tag->id }}">
+                                        <label class="form-check-label">{{ $tag->name }}</label>                                        
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-6">

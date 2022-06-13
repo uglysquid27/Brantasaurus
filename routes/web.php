@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
@@ -23,11 +24,14 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
-    //category
+    //Category
     Route::resource('/dashboard/category', CategoryController::class);
 
-    //product
+    //Product
     Route::resource('/dashboard/product', ProductController::class);
+
+    //Tag
+    Route::resource('/dashboard/tags', TagController::class);
 
     //Profile
     Route::resource('/dashboard/profile', UserController::class);

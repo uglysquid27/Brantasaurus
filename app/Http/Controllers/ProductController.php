@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
@@ -28,7 +29,8 @@ class ProductController extends Controller
     public function create()
     {
         $categories = Category::all();
-        return view('dashboard.product.create', compact('categories'));
+        $tags = Tag::all();
+        return view('dashboard.product.create', compact('categories', 'tags'));
     }
 
     /**
@@ -42,19 +44,19 @@ class ProductController extends Controller
         $validateData = $request ->validate([
             'category_id' =>'required',
             'product_name' => 'required|max:255',
-            // 'category' => 'required',
             'slug' => 'required|unique:products',
             'quantity' => 'required',
             'price' => 'required',
             'description' => 'required',
             'image' =>'image|file|max:1024',
+            'tag' =>'required',
         ]);
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('Product');
         }
 
-        Product::create($validateData);
+        Product::create($validateData)->tag()->attach($request->tag);
         return redirect('/dashboard/product')->with('success', 'New Product Succesful Added');
     }
 
@@ -79,9 +81,13 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('dashboard.product.edit', [
+        $tags = Tag::all();
+        $product_tag = $product->tag;
+        $diff = $tags->diff($product_tag);
+        return view('dashboard.product.edit', compact('diff', 'tags'), [
             'product' => $product,
-            'categories' => Category::all(),
+            'categories' => Category::all(),   
+            
         ]);
     }
 
@@ -116,6 +122,7 @@ class ProductController extends Controller
 
         Product::where('id', $product->id)
             ->update($validateData);
+        $product->tag()->sync($request->tag);
         return redirect('/dashboard/product')->with('success', 'Product Succesful Update');
     }
 

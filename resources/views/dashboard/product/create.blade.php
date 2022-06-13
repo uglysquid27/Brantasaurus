@@ -27,14 +27,26 @@
                                     <input class="form-control" type="text" name="slug" id="slug">
                                 </div>
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-6">
                                 <div class="form-group">
-                                    <label for="example-text-input" class="form-control-label">Category Name</label>
+                                    <label for="example-text-input" class="form-control-label">Category Product</label>
                                     <select class="form-control" name="category_id">
                                         @foreach($categories as $category)
-                                        <option value ={{ $category->id }}>{{ $category->name }}</option>
+                                        <option value={{ $category->id }}>{{ $category->name }}</option>
                                         @endforeach
                                     </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label d-flex mb-2">Tag Product</label>
+                                    @foreach($tags as $tag)
+                                    <div class="form-check form-check-inline">                                        
+                                        <input class="form-check-input" name="tag[]" type="checkbox"
+                                            value="{{ $tag->id }}"/>
+                                        <label class="form-check-label">{{ $tag->name }}</label>                                        
+                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                             <div class="col-md-6">
