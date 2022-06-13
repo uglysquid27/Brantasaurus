@@ -34,7 +34,7 @@
     <div class="row align-items-center py-3 px-xl-5">
         <div class="col-lg-3 d-none d-lg-block">
             <a href="" class="text-decoration-none">
-                <h1 class="m-0 display-5 font-weight-semi-bold"><img src="/assets/img/KmerchLogo.png" width="100" height="100"> Merch</h1>
+                <h1 class="m-0 display-5 font-weight-semi-bold"><img src="/assets/img/KmerchLogo.png" width="50" height="50"> Merch</h1>
             </a>
         </div>
         @if(Request::is('login') OR Route::is('register'))

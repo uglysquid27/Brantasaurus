@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('content')
 <form method="POST" action="/dashboard/product/{{ $product->slug }}" class="mb-5" enctype="multipart/form-data">
-    
+
     @method('put')
     @csrf
     <div class="container-fluid py-4">
@@ -31,12 +31,16 @@
                                         value="{{old('slug',$product->slug)}}">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Category Name</label>
                                     <select class="form-control" name="category_id">
                                         @foreach($categories as $category)
-                                        <option value ={{ $category->id }}>{{ $category->name }}</option>
+                                        @if(old('category_id',$product->category_id) == $category->id)
+                                        <option value="{{ $category->id }}" selected>{{ $category->name }}</option>
+                                        @else
+                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                        @endif
                                         @endforeach
                                     </select>
                                 </div>

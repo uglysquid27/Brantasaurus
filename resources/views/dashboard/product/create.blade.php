@@ -27,7 +27,7 @@
                                     <input class="form-control" type="text" name="slug" id="slug">
                                 </div>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Category Name</label>
                                     <select class="form-control" name="category_id">
