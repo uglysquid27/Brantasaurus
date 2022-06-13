@@ -12,16 +12,18 @@
                     <div class="navbar-nav mr-auto py-0">
                         <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : ''}}">Home</a>
                         <a href="/shop" class="nav-item nav-link {{ Request::is('shop') ? 'active' : ''}}">Shop</a>
+                        @if(Request::is('login') OR Route::is('register'))
+                        @else
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
-
                             <div class="dropdown-menu rounded-0 m-0">
                                 @foreach($categories as $category)
                                 <a href="checkout.html" class="dropdown-item"> {{ $category->name }} </a>
                                 @endforeach
                             </div>
-
+                            
                         </div>
+                        @endif
                         <a href="/contact"
                             class="nav-item nav-link {{ Request::is('contact') ? 'active' : ''}}">Contact</a>
                     </div>
@@ -47,10 +49,10 @@
                             </div>
                         </div>
                         @else
-                        <a href="{{ route('login') }}" class="nav-item nav-link">Log in</a>
+                        <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::is('login') ? 'active' : ''}}">Log in</a>
 
                         @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="nav-item nav-link">Register</a>
+                        <a href="{{ route('register') }}" class="nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
                         @endif
 
 
