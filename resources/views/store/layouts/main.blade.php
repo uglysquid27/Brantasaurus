@@ -5,8 +5,7 @@
     <meta charset="utf-8">
     <title>K-Merch Store</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    {{--
-    <meta content="Free HTML Templates" name="keywords">
+    {{-- <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description"> --}}
 
     <link rel="icon" type="image/png" href="/assets/img/KmerchLogo.png">
@@ -24,7 +23,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 
     <!-- Libraries Stylesheet -->
-    <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    {{-- <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -34,7 +33,7 @@
     @include('store.layouts.topbar')
 
     @include('store.layouts.navbar')
-    
+
     @yield('content')
 
     @include('store.layouts.footer')
@@ -48,12 +47,15 @@
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="lib/easing/easing.min.js"></script>
-    <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+    {{-- <script src="lib/easing/easing.min.js"></script> --}}
+    {{-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> --}}
+    {{-- <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script> --}}
+    {{-- <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script> --}}
+    {{-- <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> --}}
 
     <!-- Contact Javascript File -->
-    <script src="mail/jqBootstrapValidation.min.js"></script>
-    <script src="mail/contact.js"></script>
+    {{-- <script src="mail/jqBootstrapValidation.min.js"></script> --}}
+    {{-- <script src="mail/contact.js"></script> --}}
 
     <!-- Template Javascript -->
     <script src="/assets/js/main.js"></script>

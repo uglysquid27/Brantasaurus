@@ -2,7 +2,7 @@
 @section('content')
 
 <!-- Page Header Start -->
-<div class="container-fluid bg-secondary mb-5">
+{{-- <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
         <h1 class="font-weight-semi-bold text-uppercase mb-3">Shop Detail</h1>
         <div class="d-inline-flex">
@@ -11,7 +11,7 @@
             <p class="m-0">Shop Detail</p>
         </div>
     </div>
-</div>
+</div> --}}
 <!-- Page Header End -->
 
 
@@ -37,6 +37,8 @@
 
         <div class="col-lg-7 pb-5">
             <h3 class="font-weight-semi-bold mb-3"> {{ $products->product_name }} </h3>
+        <div class="col-lg-7 pb-5 product_data">
+            <h3 class="font-weight-semi-bold"> {{ $products->product_name }} </h3>
             <!-- <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
                     <small class="fas fa-star"></small>
@@ -121,21 +123,28 @@
                     </div>
                 </form>
             </div> -->
-            <div class="d-flex align-items-center mb-4 pt-2">
+            <form>
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $products->id}}" class="product_id">
+                <input type="number" value="1" name="quantity" class="form-control qty-input text-center" style="width:70px; height:35px">
+                <br>
+                <button type="submit" class="btn btn-primary px-3 addToCartBtn float-start"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button> 
+            </form>
+            {{-- <div class="d-flex align-items-center mb-4 pt-2">
                 <div class="input-group quantity mr-3" style="width: 130px;">
                     <div class="input-group-btn">
                         <button class="btn btn-primary btn-minus">
                             <i class="fa fa-minus"></i>
                         </button>
                     </div>
-                    <input type="text" class="form-control bg-secondary text-center" value="1">
+                    <input type="text" name="quantity" class="form-control bg-secondary text-center" value="1">
                     <div class="input-group-btn">
                         <button class="btn btn-primary btn-plus">
                             <i class="fa fa-plus"></i>
                         </button>
                     </div>
-                </div>
-                <button class="btn btn-primary px-3"><i class="fa fa-shopping-cart mr-1"></i> Add To Cart</button>
+                </div> --}}
+                
             </div>
             <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
@@ -376,3 +385,34 @@
 </div> -->
 <!-- Products End -->
 @endsection
+
+@section('scripts')
+<script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
+    $(document).ready(function(){
+        $('.addToCartBtn').click(function(e){
+            e.preventDefault();
+
+            var product_id = $(this).closest('.product_data').find('.product_id').val;
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val;
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: "/cart",
+                data: {
+                    'product_id': product_id,
+                    'product_qty': product_qty,
+                },
+                success: function(response) {
+                    alert(response.status);
+                }
+            });
+
+        });
+    });
+</script>
