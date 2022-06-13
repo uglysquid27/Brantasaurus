@@ -6,8 +6,10 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
+        "bumbummen99/shoppingcart": "^4.2",
         "cviebrock/eloquent-sluggable": "^9.0",
         "guzzlehttp/guzzle": "^7.2",
+        "hardevine/shoppingcart": "^3.1",
         "intervention/image": "^2.7",
         "laravel/framework": "^9.11",
         "laravel/sanctum": "^2.14.1",

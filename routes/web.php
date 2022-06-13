@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
@@ -39,6 +40,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Profile
     Route::resource('/dashboard/profile', UserController::class);
+
+    Route::post('add-to-cart', [CartController::class, 'store']);
 });
 
 Auth::routes();
@@ -57,5 +60,7 @@ Route::get('/categories', function(){
         'categories' => Category::all()
     ]);
 });
+
+// Route::post('/',[CartController::class, 'store'])->name(name:'cart.store');
 
 
