@@ -169,7 +169,8 @@
                     <div class="card product-item border-0 mb-4">
                         <div
                             class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid" src="{{ asset('storage/'.$product->image) }}" alt="" style="object-fit: cover; width: 300px; height: 300px;">
+                            <img class="img-fluid" src="{{ asset('storage/'.$product->image) }}" alt=""
+                                style="object-fit: cover; width: 300px; height: 300px;">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3"> {{ $product->product_name }} </h6>
@@ -179,7 +180,8 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="/shop/{{ $product->slug }}" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
+                            <a href="/shop/{{ $product->slug }}" class="btn btn-sm text-dark p-0"><i
+                                    class="fas fa-eye text-primary mr-1"></i>View
                                 Detail</a>
                             <a href="" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
@@ -188,7 +190,7 @@
                 </div>
                 @endforeach
                 <div class="col-12 pb-1">
-                    <nav aria-label="Page navigation">
+                    <!-- <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-center mb-3">
                             <li class="page-item disabled">
                                 <a class="page-link" href="#" aria-label="Previous">
@@ -206,8 +208,11 @@
                                 </a>
                             </li>
                         </ul>
-                    </nav>
+                    </nav> -->
+                    <div class="d-flex justify-content-center">
+                    {{ $products->links() }}
                 </div>
+                </div>                
             </div>
         </div>
         <!-- Shop Product End -->

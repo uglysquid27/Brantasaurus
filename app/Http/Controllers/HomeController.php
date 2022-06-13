@@ -28,7 +28,7 @@ class HomeController extends Controller
     }
     public function shop()
     {       
-        $products = Product::latest()->filter(request(['search', 'category', 'tag']))->get();
+        $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('3');
         $categories = Category::withCount('product')->get();
         return view('store.shop.index', compact('products', 'categories'));
     }

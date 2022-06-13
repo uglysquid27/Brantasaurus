@@ -36,7 +36,7 @@
         </div>
 
         <div class="col-lg-7 pb-5">
-            <h3 class="font-weight-semi-bold mb-3"> {{ $products->product_name }} </h3>
+            <!-- <h3 class="font-weight-semi-bold mb-3"> {{ $products->product_name }} </h3> -->
         <div class="col-lg-7 pb-5 product_data">
             <h3 class="font-weight-semi-bold"> {{ $products->product_name }} </h3>
             <!-- <div class="d-flex mb-3">
