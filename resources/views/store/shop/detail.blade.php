@@ -208,7 +208,7 @@
                         <div class="col-md-6">
                             <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
                             <div class="media mb-4">
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                {{-- <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;"> --}}
                                 <div class="media-body">
                                     <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
                                     <div class="text-primary mb-2">
@@ -377,6 +377,9 @@
             var product_id = $(this).closest('.product_data').find('.product_id').val;
             var product_qty = $(this).closest('.product_data').find('.qty-input').val;
 
+            alert(product_id);
+            alert(product_qty);
+
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -390,6 +393,7 @@
                     'product_id': product_id,
                     'product_qty': product_qty,
                 },
+                
                 success: function(response) {
                     alert(response.status);
                 }
