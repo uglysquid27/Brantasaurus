@@ -18,7 +18,7 @@
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                             <div class="dropdown-menu rounded-0 m-0">
                                 @foreach($categories as $category)
-                                <a href="checkout.html" class="dropdown-item"> {{ $category->name }} </a>
+                                <a href="/shop?category={{ $category->slug }}" class="dropdown-item"> {{ $category->name }} </a>
                                 @endforeach
                             </div>
                             
