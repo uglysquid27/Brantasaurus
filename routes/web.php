@@ -55,7 +55,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/', 'index');
     Route::get('/shop', 'shop')->name('shop');
     Route::get('/shop/{product:slug}', 'detail');
-    Route::get('/contact', 'contact');
+    Route::get('/contact', 'contact');    
 });
 
 Route::resource('/profile', UserController::class)->middleware('auth');
@@ -66,8 +66,13 @@ Route::get('/categories', function(){
     ]);
 });
 
+Route::controller(CartController::class)->group(function(){
+    Route::post('/addcart/{id}', 'addcart');
+    Route::get('/showcart', 'showcart');
+});
+
 // Route::post('/',[CartController::class, 'store'])->name(name:'cart.store');
 
-Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
+// Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
 
-Route::get('/showcart', [HomeController::class, 'showcart']);
+// Route::get('/showcart', [HomeController::class, 'showcart']);

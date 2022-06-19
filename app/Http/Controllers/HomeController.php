@@ -28,13 +28,12 @@ class HomeController extends Controller
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
+            $cartItem = cart::where('user_id', $user->id)->count();
             return view('store.index', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
             return view('store.index', compact('products', 'categories'));
         }
         
@@ -45,18 +44,14 @@ class HomeController extends Controller
             $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
+            $cartItem = cart::where('user_id', $user->id)->count();
             return view('store.shop.index', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
             return view('store.shop.index', compact('products', 'categories'));
         }
-        // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
-        // $categories = Category::withCount('product')->get();
-        // return view('store.shop.index', compact('products', 'categories'));
     }
     public function contact()
     {
@@ -64,18 +59,14 @@ class HomeController extends Controller
             $products = Product::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
+            $cartItem = cart::where('user_id', $user->id)->count();
             return view('store.contact', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
             return view('store.contact', compact('products', 'categories'));
-        }   
-        // $products = Product::all();
-        // $categories = Category::withCount('product')->get();
-        // return view('store.contact', compact('products', 'categories'));
+        }
     }
 
     public function detail(Product $product)
@@ -84,7 +75,7 @@ class HomeController extends Controller
             // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             // $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
+            $cartItem = cart::where('user_id', $user->id)->count();
             return view('store.shop.detail', [
                 'products' => $product,
                 'categories' => Category::all(),
@@ -94,7 +85,6 @@ class HomeController extends Controller
             // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             // $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
             return view('store.shop.detail', [
                 'products' => $product,
                 'categories' => Category::all()
@@ -104,41 +94,5 @@ class HomeController extends Controller
             'products' => $product,
             'categories' => Category::all()
         ]);
-    }
-
-    public function addcart(Request $request, $id ){
-        if(Auth::id()){
-            $user=auth()->user();
-            $product=product::find($id);
-            $cart=new cart;
-
-            $cart->name=$user->name;
-            // $cart->phone=$user->phone;
-            // $cart->address=$user->address;
-            $cart->product_name=$product->product_name;
-            $cart->price=$product->sell_price;
-            $cart->quantity=$request->quantity;
-            $cart->save();
-
-            return redirect()->back()->with('message','Product successfully added to cart');;
-        }else{
-            return redirect('login');
-        }
-    }
-
-    public function showcart(){
-        if(Auth::id()){
-            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
-            $categories = Category::withCount('product')->get();
-            $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
-            return view('store.shop.showcart', compact('products', 'categories', 'cartItem'));
-        }else{
-            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
-            $categories = Category::withCount('product')->get();
-            $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
-            return view('store.shop.showcart', compact('products', 'categories'));
-        }
     }
 }
