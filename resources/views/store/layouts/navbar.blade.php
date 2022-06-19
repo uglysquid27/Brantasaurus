@@ -38,7 +38,7 @@
                             
                             @auth
                                 <a href="" class="btn border">
-                                    <i class="fas fa-shopping-cart text-primary">{{ $cartItem }}</i>
+                                    <i class="fas fa-shopping-cart text-primary"> {{ $cartItem }}</i>
                                 </a>
                         @else
                                 <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::is('login') ? 'active' : ''}}" style="margin-left:200px">Log in</a>

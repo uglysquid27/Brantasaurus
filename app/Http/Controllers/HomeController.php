@@ -88,7 +88,7 @@ class HomeController extends Controller
             return view('store.shop.detail', [
                 'products' => $product,
                 'categories' => Category::all(),
-                'cartItem',
+                'cartItem' => $cartItem,
             ]);
         }else{
             // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');

@@ -25,7 +25,7 @@
 <!-- Shop Detail Start -->
 <div class="container-fluid py-5">
     <div class="row px-xl-5">
-        <div class="col-lg-4 pb-5">
+        <div class="col-lg-5 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
                     <div class="">
@@ -36,7 +36,7 @@
             </div>
         </div>
 
-        <div class="col-lg-5 pb-5 product_data">
+        <div class="col-lg-4 pb-5 product_data">
             <!-- <h3 class="font-weight-semi-bold mb-3"> {{ $products->product_name }} </h3> -->
             <!-- <div class="col-lg-5 pb-5"> -->
             <h3 class="font-weight-semi-bold"> {{ $products->product_name }} </h3>
@@ -147,7 +147,7 @@
                 </div> --}}
                 
             </div>
-            <div class="d-flex pt-2">
+            <!-- <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                 <div class="d-inline-flex">
                     <a class="text-dark px-2" href="">
@@ -163,35 +163,24 @@
                         <i class="fab fa-pinterest"></i>
                     </a>
                 </div>
-            </div>
+            </div> -->
             <!-- End Share on Social Media -->
             <!-- </div> -->
         </div>
 
-        <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center">
+        <!-- <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center">
             <div class="card px-3 py-3">
                 <div class="card-body">
-                    <form>
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-5">
-                                <label for="Quantity">Quantity</label>
-                                <div class="input-group text-center mb-3">
-                                    <input type="hidden" name="product_id" value="{{ $products->id}}"
-                                        class="product_id">
-                                    <input type="number" value="1" name="quantity"
-                                        class="form-control qty-input text-center">
-                                </div>
-                            </div>
-                            <div class="col-md-7">
-                                <br>
-                                <button type="submit" class="btn btn-primary my-2 px-3 addToCartBtn float-start"><i
-                                        class="fa fa-shopping-cart mr-1"></i>Add to Cart</button>
-                            </div>
-                    </form>
+                <form action="{{ url('addcart', $products->id) }}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $products->id}}" class="product_id">
+                <input type="number" value="1" name="quantity" class="form-control qty-input text-center" style="width:70px; height:35px">
+                <br>
+                <input type="submit" class="btn btn-primary px-3 addToCartBtn float-start" value="Add to Cart">
+            </form>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
     <div class="row px-xl-5">
         <div class="col">
@@ -277,7 +266,6 @@
 
             alert(product_id);
 
-<<<<<<< HEAD
             // $.ajaxSetup({
             //     headers: {
             //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -295,7 +283,6 @@
             //         alert(response.status);
             //     }
             // });
-=======
             alert(product_id);
             alert(product_qty);
 
@@ -317,7 +304,6 @@
                     alert(response.status);
                 }
             });
->>>>>>> c0242a82294c3770679477b04a86e0c72e0bfedb
 
         });
     });
