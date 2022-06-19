@@ -18,15 +18,38 @@
                 </div>
             </form>
         </div>
-        <div class="col-lg-3 col-6 text-right">
-            <a href="" class="btn border">
-                <i class="fas fa-heart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
-            <a href="" class="btn border">
-                <i class="fas fa-shopping-cart text-primary"></i>
-                <span class="badge">0</span>
-            </a>
+        
+       
+            @if (Route::has('login'))
+            @auth
+            <div class="nav-item dropdown" style="margin-left:250px">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{
+                    Auth::user()->name }}</a>
+                <div class="dropdown-menu rounded-0 m-0">
+                    @can('admin')
+                    <a href="/dashboard" class="dropdown-item">Dashboard</a>
+                    @endcan
+                    <a href="/profile" class="dropdown-item">Profile</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
+                                         document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+
+                </div>
+            </div>
+            {{-- @else --}}
+            {{-- <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::is('login') ? 'active' : ''}}" style="margin-left:200px">Log in</a>
+
+            @if (Route::has('register'))
+            <a href="{{ route('register') }}" class="nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
+            @endif --}}
+
+
+            @endauth
+            @endif
         </div>
         @endif
     </div>

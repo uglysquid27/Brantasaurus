@@ -66,7 +66,6 @@ section {
 }
 
 body {
-<<<<<<< HEAD
   margin: 0;
   font-family: "Poppins", sans-serif;
   font-size: 1rem;
@@ -75,16 +74,6 @@ body {
   color: #6f6f6f;
   text-align: left;
   background-color: rgb(255, 255, 255);
-=======
-    margin: 0;
-    font-family: "Poppins", sans-serif;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #6F6F6F;
-    text-align: left;
-    background-color: #fff;
->>>>>>> a20586b4e070cacc9024bfaa6ae62a342b6e52e5
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -132,6 +121,10 @@ ul,
 dl {
     margin-top: 0;
     margin-bottom: 1rem;
+}
+
+ul {
+    list-style-type: none;
 }
 
 ol ol,

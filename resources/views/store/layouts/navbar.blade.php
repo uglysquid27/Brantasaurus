@@ -10,58 +10,50 @@
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto py-0">
-                        <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : ''}}">Home</a>
-                        <a href="/shop" class="nav-item nav-link {{ Request::is('shop') ? 'active' : ''}}">Shop</a>
-                        @if(Request::is('login') OR Route::is('register'))
+                        <a href="/" class="nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
+                        <a href="/shop" class="nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">Shop</a>
+                        @if (Request::is('login') or Route::is('register'))
                         @else
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                @foreach($categories as $category)
-                                <a href="/shop?category={{ $category->slug }}" class="dropdown-item"> {{ $category->name }} </a>
-                                @endforeach
+                            <div class="nav-item dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                                <div class="dropdown-menu rounded-0 m-0">
+                                    @foreach ($categories as $category)
+                                        <a href="/shop?category={{ $category->slug }}" class="dropdown-item">
+                                            {{ $category->name }} </a>
+                                    @endforeach
+                                </div>
+
                             </div>
-                            
-                        </div>
                         @endif
                         <a href="/contact"
-                            class="nav-item nav-link {{ Request::is('contact') ? 'active' : ''}}">Contact</a>
+                            class="nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
                     </div>
-                    <div class="navbar-nav ml-auto py-0">
+                    {{-- <div class="navbar-nav ml-auto py-0">
+                        <div class="col-lg-3 col-6 text-right">
+                            <a href="" class="btn border">
+                                <i class="fas fa-heart text-primary"></i>
+                                <span class="badge">0</span>
+                            </a> --}}
                         @if (Route::has('login'))
-                        @auth
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">{{
-                                Auth::user()->name }}</a>
-                            <div class="dropdown-menu rounded-0 m-0">
-                                @can('admin')
-                                <a href="/dashboard" class="dropdown-item">Dashboard</a>
-                                @endcan
-                                <a href="/profile" class="dropdown-item">Profile</a>
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
+                            
+                            @auth
+                                <a href="" class="btn border">
+                                    <i class="fas fa-shopping-cart text-primary">{{ $cartItem }}</i>
                                 </a>
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-
-                            </div>
-                        </div>
                         @else
-                        <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::is('login') ? 'active' : ''}}">Log in</a>
+                                <a href="{{ route('login') }}" class="nav-item nav-link {{ Request::is('login') ? 'active' : ''}}" style="margin-left:200px">Log in</a>
 
-                        @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
+                                @if (Route::has('register'))
+                                <a href="{{ route('register') }}" class="nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
+                                @endif
+                             @endauth   
                         @endif
+                        
 
-
-                        @endauth
-                        @endif
                     </div>
-                </div>
+            </div>
             </nav>
         </div>
     </div>
-</div>
-<!-- Navbar End -->
+    </div>
+    <!-- Navbar End -->
