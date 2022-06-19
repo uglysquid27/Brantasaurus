@@ -37,7 +37,7 @@
                         @if (Route::has('login'))
                             
                             @auth
-                                <a href="" class="btn border">
+                                <a href="/cart" class="btn border">
                                     <i class="fas fa-shopping-cart text-primary"> {{ $cartItem }}</i>
                                 </a>
                         @else

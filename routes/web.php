@@ -44,11 +44,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
    
 });
 
-Route::middleware(['auth'])->group(function(){
-    Route::get('add-to-cart', [CartController::class, 'store']);
-    Route::post('add-to-cart', [CartController::class, 'store']);
-});
-
 Auth::routes();
 
 Route::controller(HomeController::class)->group(function () {
@@ -68,11 +63,7 @@ Route::get('/categories', function(){
 
 Route::controller(CartController::class)->group(function(){
     Route::post('/addcart/{id}', 'addcart');
-    Route::get('/showcart', 'showcart');
+    Route::get('/cart', 'showcart');
+    Route::get('/updatecart/{id}/{quantity}', 'update');
+    Route::get('/deletecart/{id}', 'destroy');
 });
-
-// Route::post('/',[CartController::class, 'store'])->name(name:'cart.store');
-
-// Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
-
-// Route::get('/showcart', [HomeController::class, 'showcart']);

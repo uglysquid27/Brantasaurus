@@ -10,6 +10,20 @@ use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
 {
+    public function showcart()
+    {
+        if (Auth::id()) {
+            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            $cartItems = Cart::where('user_id', Auth::id())->get();
+            return view('store.shop.cart', compact('products', 'categories', 'cartItem', 'cartItems'));
+        } else {
+            return redirect('login');
+        }
+    }
+
     public function addcart(Request $request, $id)
     {
         $product_id = $request->input('product_id');
@@ -34,7 +48,6 @@ class CartController extends Controller
                     $cart->user_id = $user->id;
                     $cart->product_id = $product_id;
                     $cart->quantity = $product_qty;
-                    $cart->price = $product->sell_price * $cart->quantity;
                     $cart->save();
         
                     return redirect()->back()->with('message', 'Product Successfully Added to Cart');
@@ -43,22 +56,16 @@ class CartController extends Controller
         } else {
             return redirect('login');
         }
+    }    
+
+    public function update($id, $quantity){
+        $cart = Cart::where('id', $id)->increment('quantity', $quantity);
+        return redirect()->back()->with('message', 'Product Quantity Update');
     }
 
-    public function showcart()
-    {
-        if (Auth::id()) {
-            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
-            $categories = Category::withCount('product')->get();
-            $user = auth()->user();
-            $cartItem = cart::where('name', $user->name)->count();
-            return view('store.shop.showcart', compact('products', 'categories', 'cartItem'));
-        } else {
-            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
-            $categories = Category::withCount('product')->get();
-            $user = auth()->user();
-            // $cartItem = cart::where('name', $user->name)->count();
-            return view('store.shop.showcart', compact('products', 'categories'));
-        }
+    public function destroy($id){
+        $cart = Cart::find($id);
+        $cart->delete();
+        return redirect()->back()->with('message', 'Product Successfully Delete from Cart');
     }
 }

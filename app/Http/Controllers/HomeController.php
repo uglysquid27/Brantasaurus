@@ -28,7 +28,7 @@ class HomeController extends Controller
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('user_id', $user->id)->count();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             return view('store.index', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::select('*')->latest()->take(4)->get();
@@ -44,7 +44,7 @@ class HomeController extends Controller
             $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('user_id', $user->id)->count();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             return view('store.shop.index', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
@@ -59,7 +59,7 @@ class HomeController extends Controller
             $products = Product::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('user_id', $user->id)->count();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             return view('store.contact', compact('products', 'categories', 'cartItem'));
         }else{
             $products = Product::all();
@@ -75,7 +75,7 @@ class HomeController extends Controller
             // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
             // $categories = Category::withCount('product')->get();
             $user = auth()->user();
-            $cartItem = cart::where('user_id', $user->id)->count();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             return view('store.shop.detail', [
                 'products' => $product,
                 'categories' => Category::all(),

@@ -18,7 +18,6 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->foreignId('product_id');
             $table->string('quantity')->nullable();
-            $table->string('price')->nullable();
             $table->timestamps();
         });
     }
