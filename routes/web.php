@@ -69,3 +69,5 @@ Route::get('/categories', function(){
 // Route::post('/',[CartController::class, 'store'])->name(name:'cart.store');
 
 Route::post('/addcart/{id}', [HomeController::class, 'addcart']);
+
+Route::get('/showcart', [HomeController::class, 'showcart']);

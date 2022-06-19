@@ -88,7 +88,7 @@ class HomeController extends Controller
             return view('store.shop.detail', [
                 'products' => $product,
                 'categories' => Category::all(),
-                'cartItem',
+                'cartItem' => $cartItem,
             ]);
         }else{
             // $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
@@ -123,6 +123,22 @@ class HomeController extends Controller
             return redirect()->back()->with('message','Product successfully added to cart');;
         }else{
             return redirect('login');
+        }
+    }
+
+    public function showcart(){
+        if(Auth::id()){
+            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            $cartItem = cart::where('name', $user->name)->count();
+            return view('store.shop.showcart', compact('products', 'categories', 'cartItem'));
+        }else{
+            $products = Product::latest()->filter(request(['search', 'category', 'tag']))->paginate('12');
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            // $cartItem = cart::where('name', $user->name)->count();
+            return view('store.shop.showcart', compact('products', 'categories'));
         }
     }
 }
