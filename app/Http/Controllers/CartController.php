@@ -28,6 +28,7 @@ class CartController extends Controller
                     $cartItem->product_qty = $product_qty;
                     $cartItem->save();
                     return response()->json(['status' => $prod_check->name." Added to Cart"]);
+                    
                 }
                
                 

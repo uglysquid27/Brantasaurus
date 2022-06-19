@@ -41,6 +41,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Profile
     Route::resource('/dashboard/profile', UserController::class);
 
+   
+});
+
+Route::middleware(['auth'])->group(function(){
+    Route::get('add-to-cart', [CartController::class, 'store']);
     Route::post('add-to-cart', [CartController::class, 'store']);
 });
 
@@ -63,4 +68,4 @@ Route::get('/categories', function(){
 
 // Route::post('/',[CartController::class, 'store'])->name(name:'cart.store');
 
-
+Route::post('/addcart/{id}', [HomeController::class, 'addcart']);

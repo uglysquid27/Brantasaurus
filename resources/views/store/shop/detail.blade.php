@@ -1,6 +1,13 @@
 @extends('store.layouts.main')
 @section('content')
 
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        {{ session()->get('message') }}
+    </div>
+@endif
+
 <!-- Page Header Start -->
 {{-- <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
@@ -67,7 +74,79 @@
                 @endforeach
             </p>
 
-            <!-- Start Share on Social Media -->
+            <!-- <div class="d-flex mb-3">
+                <p class="text-dark font-weight-medium mb-0 mr-3">Sizes:</p>
+                <form>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="size-1" name="size">
+                        <label class="custom-control-label" for="size-1">XS</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="size-2" name="size">
+                        <label class="custom-control-label" for="size-2">S</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="size-3" name="size">
+                        <label class="custom-control-label" for="size-3">M</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="size-4" name="size">
+                        <label class="custom-control-label" for="size-4">L</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="size-5" name="size">
+                        <label class="custom-control-label" for="size-5">XL</label>
+                    </div>
+                </form>
+            </div>
+            <div class="d-flex mb-4">
+                <p class="text-dark font-weight-medium mb-0 mr-3">Colors:</p>
+                <form>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="color-1" name="color">
+                        <label class="custom-control-label" for="color-1">Black</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="color-2" name="color">
+                        <label class="custom-control-label" for="color-2">White</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="color-3" name="color">
+                        <label class="custom-control-label" for="color-3">Red</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="color-4" name="color">
+                        <label class="custom-control-label" for="color-4">Blue</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" class="custom-control-input" id="color-5" name="color">
+                        <label class="custom-control-label" for="color-5">Green</label>
+                    </div>
+                </form>
+            </div> -->
+            <form action="{{ url('addcart', $products->id) }}" method="post">
+                @csrf
+                <input type="hidden" name="product_id" value="{{ $products->id}}" class="product_id">
+                <input type="number" value="1" name="quantity" class="form-control qty-input text-center" style="width:70px; height:35px">
+                <br>
+                <input type="submit" class="btn btn-primary px-3 addToCartBtn float-start" value="Add to Cart">
+            </form>
+            {{-- <div class="d-flex align-items-center mb-4 pt-2">
+                <div class="input-group quantity mr-3" style="width: 130px;">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-minus">
+                            <i class="fa fa-minus"></i>
+                        </button>
+                    </div>
+                    <input type="text" name="quantity" class="form-control bg-secondary text-center" value="1">
+                    <div class="input-group-btn">
+                        <button class="btn btn-primary btn-plus">
+                            <i class="fa fa-plus"></i>
+                        </button>
+                    </div>
+                </div> --}}
+                
+            </div>
             <div class="d-flex pt-2">
                 <p class="text-dark font-weight-medium mb-0 mr-2">Share on:</p>
                 <div class="d-inline-flex">
@@ -131,7 +210,7 @@
                         <div class="col-md-12">
                             <h4 class="mb-4">1 review for "Colorful Stylish Shirt"</h4>
                             <div class="media mb-4">
-                                <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                                {{-- <img src="img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;"> --}}
                                 <div class="media-body">
                                     <h6>John Doe<small> - <i>01 Jan 2045</i></small></h6>
                                     <div class="text-primary mb-2">
@@ -198,6 +277,7 @@
 
             alert(product_id);
 
+<<<<<<< HEAD
             // $.ajaxSetup({
             //     headers: {
             //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -215,6 +295,29 @@
             //         alert(response.status);
             //     }
             // });
+=======
+            alert(product_id);
+            alert(product_qty);
+
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+
+            $.ajax({
+                method: 'POST',
+                url: "/cart",
+                data: {
+                    'product_id': product_id,
+                    'product_qty': product_qty,
+                },
+                
+                success: function(response) {
+                    alert(response.status);
+                }
+            });
+>>>>>>> c0242a82294c3770679477b04a86e0c72e0bfedb
 
         });
     });
