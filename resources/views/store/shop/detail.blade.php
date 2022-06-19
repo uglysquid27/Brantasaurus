@@ -25,7 +25,7 @@
 <!-- Shop Detail Start -->
 <div class="container-fluid py-5">
     <div class="row px-xl-5">
-        <div class="col-lg-5 pb-5">
+        <div class="col-lg-4 pb-5">
             <div id="product-carousel" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner border">
                     <div class="">
@@ -33,18 +33,12 @@
                             src="{{ asset('storage/'.$products->image) }}" alt="Image" style="height: 500px;">
                     </div>
                 </div>
-                <!-- <a class="carousel-control-prev" href="#product-carousel" data-slide="prev">
-                    <i class="fa fa-2x fa-angle-left text-dark"></i>
-                </a>
-                <a class="carousel-control-next" href="#product-carousel" data-slide="next">
-                    <i class="fa fa-2x fa-angle-right text-dark"></i>
-                </a> -->
             </div>
         </div>
 
-        <div class="col-lg-7 pb-5">
+        <div class="col-lg-5 pb-5 product_data">
             <!-- <h3 class="font-weight-semi-bold mb-3"> {{ $products->product_name }} </h3> -->
-        <div class="col-lg-7 pb-5 product_data">
+            <!-- <div class="col-lg-5 pb-5"> -->
             <h3 class="font-weight-semi-bold"> {{ $products->product_name }} </h3>
             <!-- <div class="d-flex mb-3">
                 <div class="text-primary mr-2">
@@ -55,11 +49,11 @@
                     <small class="far fa-star"></small>
                 </div>
                 <small class="pt-1">(50 Reviews)</small>
-            </div> -->
-            
+                </div> -->
+
             <h3 class="font-weight-semi-bold text-primary">Rp. {{ $products->sell_price }}</h3>
             <h6 class="text-muted mb-3"><del>Rp. {{ $products->price }}</del></h6>
-            
+
             <p>{{ $products->small_description }} <a href="#desc">Read More</a></p>
 
             <p>Category &nbsp; :
@@ -170,6 +164,33 @@
                     </a>
                 </div>
             </div>
+            <!-- End Share on Social Media -->
+            <!-- </div> -->
+        </div>
+
+        <div class="col-lg-3 d-flex flex-column align-items-center justify-content-center">
+            <div class="card px-3 py-3">
+                <div class="card-body">
+                    <form>
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-5">
+                                <label for="Quantity">Quantity</label>
+                                <div class="input-group text-center mb-3">
+                                    <input type="hidden" name="product_id" value="{{ $products->id}}"
+                                        class="product_id">
+                                    <input type="number" value="1" name="quantity"
+                                        class="form-control qty-input text-center">
+                                </div>
+                            </div>
+                            <div class="col-md-7">
+                                <br>
+                                <button type="submit" class="btn btn-primary my-2 px-3 addToCartBtn float-start"><i
+                                        class="fa fa-shopping-cart mr-1"></i>Add to Cart</button>
+                            </div>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
     <div class="row px-xl-5">
@@ -184,50 +205,6 @@
                     <h4 class="mb-3" id="desc">Product Description</h4>
                     <p> {{ $products->description }} </p>
                 </div>
-                <!-- <div class="tab-pane fade" id="tab-pane-2">
-                    <h4 class="mb-3">Additional Information</h4>
-                    <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt
-                        duo dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur
-                        invidunt sed sed et, lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet
-                        rebum sed tempor kasd eirmod. Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam
-                        consetetur duo justo est, sit sanctus diam tempor aliquyam eirmod nonumy rebum dolor accusam,
-                        ipsum kasd eos consetetur at sit rebum, diam kasd invidunt tempor lorem, ipsum lorem elitr
-                        sanctus eirmod takimata dolor ea invidunt.</p>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-md-6">
-                            <ul class="list-group list-group-flush">
-                                <li class="list-group-item px-0">
-                                    Sit erat duo lorem duo ea consetetur, et eirmod takimata.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Amet kasd gubergren sit sanctus et lorem eos sadipscing at.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Duo amet accusam eirmod nonumy stet et et stet eirmod.
-                                </li>
-                                <li class="list-group-item px-0">
-                                    Takimata ea clita labore amet ipsum erat justo voluptua. Nonumy.
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="tab-pane fade" id="tab-pane-3">
                     <div class="row">
                         <div class="col-md-12">
@@ -243,7 +220,8 @@
                                         <i class="fas fa-star-half-alt"></i>
                                         <i class="far fa-star"></i>
                                     </div>
-                                    <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum et no
+                                    <p>Diam amet duo labore stet elitr ea clita ipsum, tempor labore accusam ipsum
+                                        et no
                                         at. Kasd diam tempor rebum magna dolores sed sed eirmod ipsum.</p>
                                 </div>
                             </div>
@@ -286,122 +264,38 @@
     </div>
 </div>
 <!-- Shop Detail End -->
-
-
-<!-- Products Start -->
-<!-- <div class="container-fluid py-5">
-    <div class="text-center mb-4">
-        <h2 class="section-title px-5"><span class="px-2">You May Also Like</span></h2>
-    </div>
-    <div class="row px-xl-5">
-        <div class="col">
-            <div class="owl-carousel related-carousel">
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-1.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-2.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-3.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-4.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-                <div class="card product-item border-0">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                        <img class="img-fluid w-100" src="img/product-5.jpg" alt="">
-                    </div>
-                    <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3">Colorful Stylish Shirt</h6>
-                        <div class="d-flex justify-content-center">
-                            <h6>$123.00</h6>
-                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
-                        </div>
-                    </div>
-                    <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="" class="btn btn-sm text-dark p-0"><i class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
-                        <a href="" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> -->
-<!-- Products End -->
 @endsection
 
-@section('scripts')
+@section('script')
 <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
-    $(document).ready(function(){
-        $('.addToCartBtn').click(function(e){
+    $(document).ready(function() {
+        $('.addToCartBtn').click(function(e) {
             e.preventDefault();
 
-            var product_id = $(this).closest('.product_data').find('.product_id').val;
-            var product_qty = $(this).closest('.product_data').find('.qty-input').val;
+            var product_id = $(this).closest('.product_data').find('.product_id').val();
+            var product_qty = $(this).closest('.product_data').find('.qty-input').val();
 
+            alert(product_id);
+
+<<<<<<< HEAD
+            // $.ajaxSetup({
+            //     headers: {
+            //         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            //     }
+            // });
+
+            // $.ajax({
+            //     method: 'POST',
+            //     url: "/cart",
+            //     data: {
+            //         'product_id': product_id,
+            //         'product_qty': product_qty,
+            //     },
+            //     success: function(response) {
+            //         alert(response.status);
+            //     }
+            // });
+=======
             alert(product_id);
             alert(product_qty);
 
@@ -423,7 +317,9 @@
                     alert(response.status);
                 }
             });
+>>>>>>> c0242a82294c3770679477b04a86e0c72e0bfedb
 
         });
     });
 </script>
+@endsection
