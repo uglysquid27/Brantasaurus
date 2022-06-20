@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\ChekcoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
@@ -40,6 +41,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Profile
     Route::resource('/dashboard/profile', UserController::class);
+
+    Route::get('checkout', [ChekcoutController::class, 'index']);
 
    
 });

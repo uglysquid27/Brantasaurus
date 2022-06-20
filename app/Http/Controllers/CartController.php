@@ -9,7 +9,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CartController extends Controller
+
 {
+    public $checkout_message = '';
+
     public function showcart()
     {
         if (Auth::id()) {
@@ -68,4 +71,14 @@ class CartController extends Controller
         $cart->delete();
         return redirect()->back()->with('message', 'Product Successfully Delete from Cart');
     }
+
+    // public function checkout(){
+    //     $cart = Cart::where('user_id', auth()->id())->get();
+    //     foreach ($cart as $cartProduct){
+    //         $product = Product::find($cartProduct->product_id);
+    //         if($product || !$product->quantity < $cartProduct->quantity){
+    //            $this->$checkout_message = 'Error: Product not found in stock';
+    //         }
+    //     }
+    // }
 }
