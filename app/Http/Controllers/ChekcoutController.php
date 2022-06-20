@@ -66,7 +66,7 @@ class ChekcoutController extends Controller
             $user->address = $request->input('address');
             $user->city = $request->input('city');
             $user->state = $request->input('state');
-            $user->postal = $request->input('postal');
+            $user->zip = $request->input('postal');
             $user->update();
         }
         

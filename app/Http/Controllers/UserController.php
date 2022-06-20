@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Cart;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -17,9 +20,18 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('store.profile.index', [
-            'user' => User::all()
-        ]);
+        if(Auth::id()){
+            $products = Product::all();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            return view('store.profile.index', compact('products', 'categories', 'cartItem'));
+        }else{
+            $products = Product::all();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            return view('store.contact', compact('products', 'categories'));
+        }
     }
 
     /**
@@ -62,9 +74,18 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('store.profile.edit', [
-            'user' => $user,
-        ]);
+        if(Auth::id()){
+            $products = Product::all();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            return view('store.profile.edit', compact('products', 'categories', 'cartItem','user'));
+        }else{
+            $products = Product::all();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            return view('store.contact', compact('products', 'categories'));
+        }
     }
 
     /**

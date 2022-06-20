@@ -22,6 +22,11 @@ return new class extends Migration
             $table->string('password');
             $table->string('image')->nullable();
             $table->string('role')->default('user');
+            $table->string('phone')->nullable();
+            $table->string('address')->nullable();
+            $table->string('city')->nullable();
+            $table->string('state')->nullable();
+            $table->string('zip')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

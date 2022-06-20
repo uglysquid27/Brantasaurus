@@ -34,8 +34,8 @@
                             <a href="" class="small text-muted mb-0 d-flex">History</a>
                         </div>
                         <div class="mx-3">
-                            <i class="fa-solid fa-ranking-star fa-2x text-primary"></i>
-                            <a href="" class="small text-muted mb-0 d-flex">Review</a>
+                            <i class="fa-solid fa-cart-flatbed fa-2x text-primary"></i>
+                            <a href="" class="small text-muted mb-0 d-flex">My Order</a>
                         </div>
                     </div>
                 </div>

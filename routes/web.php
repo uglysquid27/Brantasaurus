@@ -70,4 +70,6 @@ Route::controller(CartController::class)->group(function(){
     Route::get('/cart', 'showcart');
     Route::get('/updatecart/{id}/{quantity}', 'update');
     Route::get('/deletecart/{id}', 'destroy');
+    Route::get('checkout', [ChekcoutController::class, 'index']);
+    Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
 });
