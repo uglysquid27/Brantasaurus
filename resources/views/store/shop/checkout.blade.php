@@ -61,14 +61,27 @@
                                 </tr>
                             </thead>
                         <tbody> 
+                            @php $total_amount =0; @endphp
                             @foreach($cartProduct as $item)
+                            @php $total =0; @endphp
+                            @php $total += $item->product->sell_price * $item->quantity; @endphp
                                 <tr>
                                     <td>{{ $item->product->product_name }}</td>
                                     <td>{{ $item->quantity }}</td>
                                     <td>{{ $item->product->sell_price }}</td>
                                 </tr>
-                            
+                                @php $total_amount += $item->product->sell_price * $item->quantity; @endphp  
                             @endforeach
+                            <tr>
+                                <td>
+                                    <h6>Total</h6>
+                                </td>
+                                <td></td>
+                                <td>
+                                      
+                                    <h6 class="font-weight-bold">{{ $total_amount }}</h6>
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
                     <hr>
