@@ -8,6 +8,8 @@
     </div>
 @endif --}}
     <div class="container mt-5">
+        <form action="{{ url('place-order') }}" method="post"> 
+            {{ csrf_field() }} 
         <div class="row">
             <div class="col-md-7">
                 <div class="card">
@@ -17,31 +19,31 @@
                         <div class="row checkout-form">
                             <div class="col-md-6">
                                 <label for="firstname">Name</label>
-                                <input type="text" class="form-control" value="{{ $user->name }}">
+                                <input type="text" class="form-control" value="{{ $user->name }}" name="name">
                             </div>
                             <div class="col-md-6">
                                 <label for="firstname">Email</label>
-                                <input type="text" class="form-control" value="{{ $user->email }}">
+                                <input type="text" class="form-control" value="{{ $user->email }}" name="email">
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Phone Number</label>
-                                <input type="text" class="form-control" placeholder="Enter your phone number">
+                                <input type="text" class="form-control" value="{{ $user->phone }}" placeholder="Enter your phone number" name="phone">
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Address</label>
-                                <input type="text" class="form-control" placeholder="Enter your address">
+                                <input type="text" class="form-control" value="{{ $user->address }}" placeholder="Enter your address" name="address">
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">City</label>
-                                <input type="text" class="form-control" placeholder="Enter your city" >
+                                <input type="text" class="form-control" value="{{ $user->city }}" placeholder="Enter your city" name="city">
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">State</label>
-                                <input type="text" class="form-control" placeholder="Enter your state">
+                                <input type="text" class="form-control" value="{{ $user->state }}" placeholder="Enter your state" name="state">
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Postal Code</label>
-                                <input type="text" class="form-control" placeholder="Enter your postal code">
+                                <input type="text" class="form-control" value="{{ $user->postal }}" placeholder="Enter your postal code" name="postal">
                             </div>
                         </div>
                     </div>
@@ -74,22 +76,22 @@
                             @endforeach
                             <tr>
                                 <td>
-                                    <h6>Total</h6>
+                                    <h6 class="font-weight-bold">Total</h6>
                                 </td>
                                 <td></td>
                                 <td>
-                                      
                                     <h6 class="font-weight-bold">{{ $total_amount }}</h6>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                     <hr>
-                    <button class="btn btn-primary float-end">Place order</button>
+                    <button type="submit" class="btn btn-primary float-end">Place order</button>
                     </div>
                 </div>
             </div>
         </div>
+    </form>
     </div>
 
 @endsection

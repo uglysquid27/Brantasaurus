@@ -42,9 +42,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Profile
     Route::resource('/dashboard/profile', UserController::class);
 
+    //order
     Route::get('checkout', [ChekcoutController::class, 'index']);
 
-   
+    Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
 });
 
 Auth::routes();

@@ -1,6 +1,12 @@
 @extends('store.layouts.main')
 @section('content')
 <!-- Carousel Start -->
+@if(session()->has('message'))
+    <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">x</button>
+        {{ session()->get('message') }}
+    </div>
+@endif
 <div id="header-carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
         <div class="carousel-item active" style="height: 500px;">
