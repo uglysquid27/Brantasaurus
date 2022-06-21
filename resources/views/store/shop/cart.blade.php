@@ -2,10 +2,10 @@
 @section('content')
 
 @if(session()->has('message'))
-    <div class="alert alert-success">
-        <button type="button" class="close" data-dismiss="alert">x</button>
-        {{ session()->get('message') }}
-    </div>
+<div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">x</button>
+    {{ session()->get('message') }}
+</div>
 @endif
 
 <!-- Page Header Start -->
@@ -25,6 +25,9 @@
 <!-- Cart Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
+            @if($cartItems->count() == 0)
+            <h1 class="text-center text-uppercase text-primary font-weight-bold">Your Cart is Empty</h1>
+        @else
         <div class="col-lg-8 table-responsive mb-5">
             <table class="table table-bordered text-center mb-0">
                 <thead class="bg-secondary text-dark">
@@ -49,21 +52,25 @@
                             <div class="input-group quantity mx-auto" style="width: 120px;">
                                 <div class="input-group text-center mb-3">
                                     @if($item->quantity > 1)
-                                    <a href="{{url('/updatecart/'.$item->id.'/-1')}}" class="btn btn-sm bg-primary text-secondary">-</a>
+                                    <a href="{{url('/updatecart/'.$item->id.'/-1')}}"
+                                        class="btn btn-sm bg-primary text-secondary">-</a>
                                     @endif
                                     <input type="text" value="{{ $item->quantity }}" name="quantity"
                                         class="form-control qty-input text-center" style="width:30px; height:35px">
-                                    <a href="{{url('/updatecart/'.$item->id.'/1')}}" class="btn btn-sm bg-primary text-secondary">+</a>
+                                    <a href="{{url('/updatecart/'.$item->id.'/1')}}"
+                                        class="btn btn-sm bg-primary text-secondary">+</a>
                                 </div>
                             </div>
                         </td>
                         <td class="align-middle"> {{ $total }} </td>
-                        <td class="align-middle"><button class="btn btn-sm btn-primary"><a href="{{ url('deletecart/'.$item->id) }}"><i
-                                    class="fa fa-times text-secondary"></i></a></button></td>
+                        <td class="align-middle"><button class="btn btn-sm btn-primary"><a
+                                    href="{{ url('deletecart/'.$item->id) }}"><i
+                                        class="fa fa-times text-secondary"></i></a></button></td>
                     </tr>
                 </tbody>
-                @php $total_amount += $item->product->sell_price * $item->quantity; @endphp                
+                @php $total_amount += $item->product->sell_price * $item->quantity; @endphp
                 @endforeach
+
             </table>
         </div>
         <div class="col-lg-4">
@@ -80,13 +87,14 @@
                         <h6 class="font-weight-medium">Shipping</h6>
                         <h6 class="font-weight-medium">$10</h6>
                     </div>
-                </div> -->
+            </div> -->
                 <div class="card-footer border-secondary bg-transparent">
                     <div class="d-flex justify-content-between mt-2">
                         <h5 class="font-weight-bold">Total</h5>
                         <h5 class="font-weight-bold">{{ $total_amount }}</h5>
                     </div>
-                    <a href="{{ url('checkout')}}"class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+                    <a href="{{ url('checkout')}}" class="btn btn-block btn-primary my-3 py-3">Proceed To Checkout</a>
+                    @endif
                 </div>
             </div>
         </div>

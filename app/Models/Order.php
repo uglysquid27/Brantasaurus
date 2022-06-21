@@ -22,4 +22,8 @@ class Order extends Model
         'message', 
         'tracking_num'
     ];
+
+    public function order_items(){
+        return $this->hasMany(OrderItem::class);
+    }
 }

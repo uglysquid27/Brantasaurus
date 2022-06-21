@@ -156,7 +156,9 @@
                 </div>
             </div>
             @endforeach
+            <div class="col-lg-12 col-md-6 col-sm-12 pb-1 text-center">
             <a href="/shop" class="btn btn-outline-primary py-md-2 px-md-3">Show More</a>
+            </div>
         </div>        
     </div>
 

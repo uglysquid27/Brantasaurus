@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
@@ -69,7 +70,13 @@ Route::controller(CartController::class)->group(function(){
     Route::post('/addcart/{id}', 'addcart');
     Route::get('/cart', 'showcart');
     Route::get('/updatecart/{id}/{quantity}', 'update');
-    Route::get('/deletecart/{id}', 'destroy');
-    Route::get('checkout', [ChekcoutController::class, 'index']);
-    Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
+    Route::get('/deletecart/{id}', 'destroy');    
 });
+
+Route::controller(ChekcoutController::class)->group(function(){
+    Route::get('checkout', 'index')->middleware('auth');
+    Route::post('place-order', 'placeOrder')->middleware('auth');
+});
+
+Route::get('/my-orders/{id}/print', [OrderController::class, 'print'])->name('print');
+Route::resource('/my-orders', OrderController::class)->middleware('auth');

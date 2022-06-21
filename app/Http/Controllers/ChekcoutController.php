@@ -40,6 +40,15 @@ class ChekcoutController extends Controller
         $order->city = $request->input('city');
         $order->state = $request->input('state');
         $order->zip = $request->input('postal');
+
+        // to calculate the total price
+        $total = 0;
+        $cartitems_total = Cart::where('user_id', Auth::id())->get();
+        foreach($cartitems_total as $prod){
+            $total += $prod->product->sell_price * $prod->quantity;
+        }
+
+        $order->total_price = $total;
         $order->tracking_num = 'num'.rand(1111,9999);
         $order->save();
 

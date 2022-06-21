@@ -30,14 +30,16 @@
 </head>
 
 <body style="margin: 0;">
+    @if(Route::is('print'))
+    @else
     @include('store.layouts.topbar')
-
     @include('store.layouts.navbar')
-
+    @endif
     @yield('content')
-
+    @if(Route::is('print'))
+    @else
     @include('store.layouts.footer')
-
+    @endif
 
     <!-- Back to Top -->
     <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>

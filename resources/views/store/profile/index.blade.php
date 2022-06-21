@@ -35,7 +35,7 @@
                         </div>
                         <div class="mx-3">
                             <i class="fa-solid fa-cart-flatbed fa-2x text-primary"></i>
-                            <a href="" class="small text-muted mb-0 d-flex">My Order</a>
+                            <a href="/my-orders" class="small text-muted mb-0 d-flex">My Order</a>
                         </div>
                     </div>
                 </div>
