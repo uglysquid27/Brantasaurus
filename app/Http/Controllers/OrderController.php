@@ -119,7 +119,7 @@ class OrderController extends Controller
                 'orders' => $orders,
             ];
             $pdf = PDF::loadView('store.order.print', $data);
-            return $pdf->download('Order Details.pdf');
+            return $pdf->stream('Order Details '. $orders->tracking_num .'.pdf');
             // return view('store.order.print', compact('orders'));
         } else {
             return view('store.index', compact('products', 'categories'));

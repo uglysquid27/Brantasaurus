@@ -3,88 +3,192 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Print</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-    <link rel="stylesheet" href="style.css">
+    <title>Print Order Details</title>
+    <style>
+        body {
+            background-color: white;
+            margin: 0;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            margin: 0;
+            padding: 0;
+        }
+
+        p {
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 100%;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .brand-section {
+            background-color: #D19C97;
+            padding: 10px 40px;
+        }
+
+        .logo {
+            width: 50%;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-6 {
+            width: 50%;
+            flex: 0 0 auto;
+        }
+
+        .text-white {
+            color: #fff;
+        }
+
+        .company-details {
+            float: right;
+            text-align: right;
+        }
+
+        .body-section {
+            padding: 16px;
+            border: 1px solid gray;
+        }
+
+        .heading {
+            font-size: 20px;
+            margin-bottom: 08px;
+        }
+
+        .sub-heading {
+            color: #262626;
+            margin-bottom: 8px;
+        }
+
+        table {
+            background-color: #fff;
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        table thead tr {
+            border: 1px solid #111;
+            background-color: #f2f2f2;
+        }
+
+        table td {
+            vertical-align: middle !important;
+            text-align: center;
+        }
+
+        table th,
+        table td {
+            padding-top: 08px;
+            padding-bottom: 08px;
+        }
+
+        .table-bordered {
+            box-shadow: 0px 0px 5px 0.5px gray;
+        }
+
+        .table-bordered td,
+        .table-bordered th {
+            border: 1px solid #dee2e6;
+        }
+
+        .text-right {
+            text-align: end;
+        }
+
+        .w-20 {
+            width: 20%;
+        }
+
+        .float-right {
+            float: right;
+        }
+
+        .km {
+            margin-top: 10px;
+        }
+
+        .shipping-details,
+        .order-details {
+            padding-left: 20px;
+        }
+    </style>
 </head>
 
 <body>
-    <div class="container-fluid pt-5">
-        <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 100px">
-            <h1 class="font-weight-semi-bold text-uppercase mb-3">Order Details</h1>
+
+    <div class="container">
+        <div class="brand-section">
+            <div class="row">
+                <div class="col-6">
+                    <h1 class="text-white km">K-Merch</h1>
+                </div>
+            </div>
         </div>
-        <div class="row px-xl-5">
-            <div class="col-lg-8 mb-3">
-                <table class="table table-borderless">
-                    <h4 class="mb-3 font-weight-bold text-uppercase">Shipping Details</h4>
-                    <tr>
-                        <th>Tracking No.</th>
-                        <td style="width:5%">:</td>
-                        <td> {{ $orders->tracking_num }} </td>
-                    </tr>
-                    <tr>
-                        <th>Name</th>
-                        <td style="width:5%">:</td>
-                        <td> {{ $orders->name }} </td>
-                    </tr>
-                    <tr>
-                        <th>Email</th>
-                        <td style="width:5%">:</td>
-                        <td> {{ $orders->email }} </td>
-                    </tr>
-                    <tr>
-                        <th>Contact No.</th>
-                        <td style="width:5%">:</td>
-                        <td> {{ $orders->phone }} </td>
-                    </tr>
-                    <tr>
-                        <th>Shipping Address</th>
-                        <td style="width:5%">:</td>
-                        <td>
-                            {{ $orders->address }},
-                            {{ $orders->city }},
-                            {{ $orders->state }},
-                            {{ $orders->zip }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>Order Date</th>
-                        <td style="width:5%">:</td>
-                        <td> {{ $orders->created_at->format('d-m-Y') }} </td>
-                    </tr>
-                </table>
+
+        <div class="body-section">
+            <div class="row">
+                <div class="col-12 shipping-details">
+                    <h2 class="heading">Invoice No: {{ $orders->id}}</h2>
+                    <p class="sub-heading">Tracking No. {{ $orders->tracking_num }} </p>
+                    <p class="sub-heading">Order Date: {{ $orders->created_at->format('d-m-Y') }} </p>
+                    <p class="sub-heading">Email Address: {{ $orders->email }} </p>
+                    <p class="sub-heading">Full Name: {{ $orders->name }}</p>
+                    <p class="sub-heading">Address: {{ $orders->address }}, {{ $orders->city }}, {{ $orders->state }},
+                        {{ $orders->zip }}</p>
+                    <p class="sub-heading">Phone Number: {{ $orders->phone }}</p>
+                </div>
             </div>
-            <div class="col-lg-12 table-responsive mb-5">
-                <h4 class="mb-3 font-weight-bold text-uppercase">Order Details</h4>
-                <table class="table table-bordered text-center mb-0">
-                    <thead class="bg-secondary text-dark">
-                        <tr>
-                            <th>Name</th>
-                            <th>Quantity</th>
-                            <th>Price</th>
-                            <th>Image</th>
-                        </tr>
-                    </thead>
-                    <tbody class="align-middle">
-                        @foreach($orders->order_items as $item)
-                        <tr>
-                            <td class="align-middle"> {{ $item->product->product_name }} </td>
-                            <td class="align-middle"> {{ $item->quantity }} </td>
-                            <td class="align-middle">Rp. {{ number_format($item->price) }} </td>
-                            <td class="align-middle"> <img src="{{ asset('storage/'.$item->product->image) }}" alt=""
-                                    class="img-fluid" style="width: 150px;"> </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                    <th colspan="4">
-                        <h4>Total Price : <b>Rp. {{ number_format($orders->total_price) }}</b> </h4>
-                    </th>
-                </table>
-            </div>
+        </div>
+
+        <div class="body-section order-details">
+            <h3 class="heading">Ordered Items</h3>
+            <br>
+            <table class="table-bordered">
+                <thead>
+                    <tr>
+                        <th>Product</th>
+                        <th class="w-20">Quantity</th>
+                        <th class="w-20">Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orders->order_items as $item)
+
+                    <tr>
+                        <td>{{ $item->product->product_name }}</td>
+                        <td>{{ $item->quantity }}</td>
+                        <td>Rp. {{ number_format($item->price) }}</td>
+                    </tr>                    
+                    @endforeach
+                    <tr>
+                        <th colspan="2" class="text-center">      Grand Total           </th>
+                        <td> Rp. {{ number_format($orders->total_price) }}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="body-section">
+            <p>&copy; Copyright 2022 - K-Merch. All rights reserved.
+            </p>
         </div>
     </div>
+
 </body>
 
 </html>
