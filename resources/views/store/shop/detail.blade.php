@@ -126,7 +126,7 @@
 @endsection
 
 @section('script')
-<script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
+{{-- <script language="JavaScript" type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js">
     $(document).ready(function() {
         $('.addToCartBtn').click(function(e) {
             e.preventDefault();
@@ -177,5 +177,5 @@
 
         });
     });
-</script>
+</script> --}}
 @endsection
