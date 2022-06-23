@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChekcoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\OrderAdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -54,6 +55,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard/orders/view-orders/{id}', [OrderAdminController::class, 'view']);
     Route::put('update-order/{id}', [OrderAdminController::class, 'update']);
     Route::get('/dashboard/order-history', [OrderAdminController::class, 'orderHistory']);
+
+    //UserList
+    Route::resource('/dashboard/users', DashboardUserController::class);
 });
 
 Auth::routes();
