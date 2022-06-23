@@ -6,8 +6,8 @@
             <div class="card">
                 <div class="card-body">
                     <div class="card-header bg-primary">
-                        <h4 class="text-white">New Orders
-                            <a href="{{ 'order-history' }}" class="btn btn-primary float-end">History</a>
+                        <h4 class="text-white">History Orders
+                            <a href="{{ 'orders' }}" class="btn btn-primary float-end">New Order</a>
                         </h4>
                     </div>
                     <div class="card-body">

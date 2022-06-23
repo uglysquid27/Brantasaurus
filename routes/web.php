@@ -50,6 +50,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
 
     Route::resource('/dashboard/orders', OrderAdminController::class);
+    Route::get('/dashboard/orders/view-orders/{id}', [OrderAdminController::class, 'view']);
+    Route::put('update-order/{id}', [OrderAdminController::class, 'update']);
+    Route::get('/dashboard/order-history', [OrderAdminController::class, 'orderHistory']);
 });
 
 Auth::routes();
