@@ -19,31 +19,31 @@
                         <div class="row checkout-form">
                             <div class="col-md-6">
                                 <label for="firstname">Name</label>
-                                <input type="text" class="form-control" value="{{ $user->name }}" name="name">
+                                <input type="text" class="form-control" value="{{ $user->name }}" name="name" required>
                             </div>
                             <div class="col-md-6">
                                 <label for="firstname">Email</label>
-                                <input type="text" class="form-control" value="{{ $user->email }}" name="email">
+                                <input type="text" class="form-control" value="{{ $user->email }}" name="email" required> 
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Phone Number</label>
-                                <input type="text" class="form-control" value="{{ $user->phone }}" placeholder="Enter your phone number" name="phone">
+                                <input type="text" class="form-control" value="{{ $user->phone }}" placeholder="Enter your phone number" name="phone" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Address</label>
-                                <input type="text" class="form-control" value="{{ $user->address }}" placeholder="Enter your address" name="address">
+                                <input type="text" class="form-control" value="{{ $user->address }}" placeholder="Enter your address" name="address" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">City</label>
-                                <input type="text" class="form-control" value="{{ $user->city }}" placeholder="Enter your city" name="city">
+                                <input type="text" class="form-control" value="{{ $user->city }}" placeholder="Enter your city" name="city" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">State</label>
-                                <input type="text" class="form-control" value="{{ $user->state }}" placeholder="Enter your state" name="state">
+                                <input type="text" class="form-control" value="{{ $user->state }}" placeholder="Enter your state" name="state" required>
                             </div>
                             <div class="col-md-6 mt-3">
                                 <label for="firstname">Postal Code</label>
-                                <input type="text" class="form-control" value="{{ $user->postal }}" placeholder="Enter your postal code" name="postal">
+                                <input type="text" class="form-control" value="{{ $user->postal }}" placeholder="Enter your postal code" name="postal" required>
                             </div>
                         </div>
                     </div>

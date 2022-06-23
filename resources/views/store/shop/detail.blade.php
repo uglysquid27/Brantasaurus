@@ -41,6 +41,7 @@
 
             <h3 class="font-weight-semi-bold text-primary">Rp. {{ $products->sell_price }}</h3>
             <h6 class="text-muted mb-3"><del>Rp. {{ $products->price }}</del></h6>
+            <h6 class="text-muted mb-3">Product left : {{ $products->quantity }}</h6>
 
             <p>{{ $products->small_description }} <a href="#desc">Read More</a></p>
 
