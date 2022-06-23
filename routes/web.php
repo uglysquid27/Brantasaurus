@@ -47,7 +47,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //order
     Route::get('checkout', [ChekcoutController::class, 'index']);
-
     Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
 
     //OrderDashboard

@@ -13,7 +13,7 @@
     <div class="collapse navbar-collapse  w-auto " id="sidenav-collapse-main">
         <ul class="navbar-nav">
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard') ? 'active' : ''}}" href="/dashboard">
+                <a class="nav-link {{ Request::is('dashboard') ? 'active' : '' }}" href="/dashboard">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-tv-2 text-primary text-sm opacity-10"></i>
@@ -22,34 +22,38 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : ''}}" href="{{ '/dashboard/product' }}">
+                <a class="nav-link {{ Request::is('dashboard/product*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/product' }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fas fa-archive text-info text-sm opacity-10" aria-hidden="true"></i>
                     </div>
                     <span class="nav-link-text ms-1">Product List</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : ''}}" href="{{ '/dashboard/category' }}">
+                <a class="nav-link {{ Request::is('dashboard/category*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/category' }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-cubes text-warning text-sm opacity-10" aria-hidden="true"></i>
                     </div>
                     <span class="nav-link-text ms-1">Category List</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/tags*') ? 'active' : ''}}" href="{{ '/dashboard/tags' }}">
+                <a class="nav-link {{ Request::is('dashboard/tags*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/tags' }}">
                     <div
-                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">                        
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-tags text-secondary text-sm opacity-10" aria-hidden="true"></i>
                     </div>
                     <span class="nav-link-text ms-1">Tag List</span>
                 </a>
-            </li>            
+            </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/orders*') ? 'active' : ''}}" href="{{ '/dashboard/orders' }}">
+                <a class="nav-link {{ Request::is('dashboard/orders*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/orders' }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-cart-arrow-down text-info text-sm opacity-10"></i>
@@ -58,7 +62,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : ''}}" href="{{ '/dashboard/users' }}">
+                <a class="nav-link {{ Request::is('dashboard/users*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/users' }}">
                     <div
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="ni ni-single-02 text-dark text-sm opacity-10"></i>
