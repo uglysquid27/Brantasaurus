@@ -78,7 +78,11 @@
                                         </p>
                                     </td>
                                     <td>
+                                        @if($product->quantity > 0)
                                         <p class="text-md text-secondary mb-0">{{ $product->quantity }}</p>
+                                        @else
+                                        <p class="text-md text-secondary mb-0">0</p>
+                                        @endif
                                     </td>
                                     <td>
                                         <p class="text-md text-secondary mb-0">Rp. {{ $product->price }}</p>
