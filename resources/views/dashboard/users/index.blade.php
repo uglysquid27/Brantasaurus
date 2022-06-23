@@ -82,16 +82,16 @@
                                             alt="Image of {{ $product->product_name }}" style="height: 150px; width: 150px;">
                                     </td> --}}
                                     <td class="align-middle text-center">
-                                        <a href="view-users/{{ $product->id }}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></span></a>
-                                        <a href="view-users/{{ $product->id }}/edit" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                        <form action="view-users/{{ $product->id }}" method="POST" class="d-inline">
+                                        <a href="/dashboard/users/view/{{ $product->id }}" class="btn btn-primary"><i class="fa fa-eye" aria-hidden="true"></i></span></a>
+                                        {{-- <a href="view-users/{{ $product->id }}/edit" class="btn btn-warning"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                        <form action="view-user/{{ $product->id }}" method="POST" class="d-inline">
                                             @method('delete')
                                             @csrf
                                             <button class="btn btn-danger"
                                                 onclick="return confirm('Are You Sure to Delete?')">
                                                 <i class="fa fa-trash-o" aria-hidden="true"></i>
                                             </button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             </tbody>

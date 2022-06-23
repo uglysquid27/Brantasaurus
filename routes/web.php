@@ -58,6 +58,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //UserList
     Route::resource('/dashboard/users', DashboardUserController::class);
+    Route::get('/dashboard/users/view/{id}', [DashboardUserController::class, 'view']);
 });
 
 Auth::routes();
