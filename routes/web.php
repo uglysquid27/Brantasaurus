@@ -5,6 +5,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChekcoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\OrderAdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -47,6 +48,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('checkout', [ChekcoutController::class, 'index']);
 
     Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
+
+    Route::resource('/dashboard/orders', OrderAdminController::class);
 });
 
 Auth::routes();
