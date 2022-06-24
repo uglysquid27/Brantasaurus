@@ -1,7 +1,7 @@
 @extends('dashboard.layouts.main')
 @section('content')
     <div class="container-fluid py-4">
-        <div class="row mb-3">
+        {{-- <div class="row mb-3">
             <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
                 <div class="card">
                     <div class="card-body p-3">
@@ -25,7 +25,7 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </div> --}}
         <div class="row">
             <div class="col-12">
                 <div class="card mb-4">
