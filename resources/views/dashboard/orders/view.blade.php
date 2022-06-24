@@ -22,6 +22,7 @@
                         <option {{ $orders->status == '0'? 'selected':'' }} value="0">Pending</option>
                         <option {{ $orders->status == '1'? 'selected':'' }} value="1">Process</option>
                         <option {{ $orders->status == '2'? 'selected':'' }} value="2">Shipping</option>
+                        <option {{ $orders->status == '3'? 'selected':'' }} value="3">Complete</option>
                     </select>                
                     <button class="btn btn-primary float-end mt-3" type="submit">Update</button>
                     @if($orders->status == 0)
