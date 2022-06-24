@@ -1,37 +1,42 @@
-@extends('dashboard.layouts.main')
+@extends('store.layouts.main')
 @section('content')
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-3 text-white">Order Details</h1>
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">History Order Details</h1>
         <div class="d-inline-flex">
-            <p class="m-0 text-white"><a href="/dashboard/orders" class="text-white">Back</a></p>
-            {{-- <p class="m-0 px-2">-</p>
-            <p class="m-0">Order Details</p> --}}
+            <p class="m-0"><a href="/">Home</a></p>
+            <p class="m-0 px-2">-</p>
+            <p class="m-0">Order Details</p>
         </div>
     </div>
 </div>
 <div class="container-fluid pt-5">
-    <div class="row px-xl-5">
-        <div class="col-md-6 ml-4">
-            <div class="form-group">
-                <form action="{{ url('update-order/'.$orders->id) }}" method="post">
-                    @csrf
-                    @method('PUT')
-                    <label for="example-text-input" class="form-control-label">Order Status</label>
-                    <select class="form-control" name="order_status">
-                        <option {{ $orders->status == '0'? 'selected':'' }} value="0">Pending</option>
-                        <option {{ $orders->status == '1'? 'selected':'' }} value="1">Process</option>
-                        <option {{ $orders->status == '2'? 'selected':'' }} value="2">Shipping</option>
-                    </select>                
-                    <button class="btn btn-primary float-end mt-3" type="submit">Update</button>
-                    @if($orders->status == 0)
-                    <a href="{{ url('/dashboard/orders/image-payment/'.$orders->id) }}" class="btn btn-primary float-end mt-3 mx-2" type="submit">Payment Evidence</a>                    
-                    @endif
-                </form>
-            </div>
-        </div>        
+    <div class="row px-xl-5 mb-3">
+        @if ($orders->status == 2)
+        <div class="col-md-2 d-flex">
+            <form action="/receive-order/{{ $orders->id }}" method="post">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-border">
+                    <i class="fa fa-check text-primary"></i> 
+                    Receive Order
+                </button>
+            </form>
+        </div>
+        <div class="col-md-10 d-flex flex-row-reverse">
+            <a href="/my-orders/{{ $orders->id }}/print" class="btn border">
+                <i class="fa fa-print text-primary"></i> Print
+            </a>
+        </div>
+        @else
+        <div class="col-md-12 d-flex flex-row-reverse">
+            <a href="/my-orders/{{ $orders->id }}/print" class="btn border">
+                <i class="fa fa-print text-primary"></i> Print
+            </a>
+        </div>
+        @endif
     </div>
-    <div class="row px-xl-5 mt-3">
+    <div class="row px-xl-5">
         <div class="col-lg-8 mb-3">
             <table class="table table-borderless">
                 <h4 class="mb-3 text-primary font-weight-bold text-uppercase">Shipping Details</h4>

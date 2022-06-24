@@ -13,15 +13,16 @@ use Illuminate\Support\Facades\Auth;
 
 class ChekcoutController extends Controller
 {
-    public function index(){
-        if(Auth::id()){
+    public function index()
+    {
+        if (Auth::id()) {
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
             $cartProduct = Cart::where('user_id', $user->id, Auth::id())->get();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             return view('store.shop.checkout', compact('products', 'categories', 'user', 'cartItem', 'cartProduct'));
-        }else{
+        } else {
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
@@ -30,7 +31,8 @@ class ChekcoutController extends Controller
         // return view('store.shop.checkout');
     }
 
-    public function placeOrder(Request $request){
+    public function placeOrder(Request $request)
+    {
         $order = new Order();
         $order->user_id = Auth::id();
         $order->name = $request->input('name');
@@ -44,17 +46,17 @@ class ChekcoutController extends Controller
         // to calculate the total price
         $total = 0;
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
-        foreach($cartitems_total as $prod){
+        foreach ($cartitems_total as $prod) {
             $total += $prod->product->sell_price * $prod->quantity;
         }
 
         $order->total_price = $total;
-        $order->tracking_num = 'num'.rand(1111,9999);
+        $order->tracking_num = 'num'.rand(1111, 9999);
         $order->save();
 
         $order->id;
         $cartProduct = Cart::where('user_id', Auth::id())->get();
-        foreach($cartProduct as $cart){
+        foreach ($cartProduct as $cart) {
             OrderItem::create([
                 'order_id' => $order->id,
                 'product_id' => $cart->product_id,
@@ -67,7 +69,7 @@ class ChekcoutController extends Controller
             $prod->update();
         }
         
-        if(Auth::user()->address == NULL){
+        if (Auth::user()->address == null) {
             $user = User::where('id', Auth::id())->first();
             $user->name = $request->input('name');
             $user->email = $request->input('email');
@@ -80,11 +82,45 @@ class ChekcoutController extends Controller
         }
         
         $cartProduct = Cart::where('user_id', Auth::id())->get();
-        Cart::destroy($cartProduct); 
+        Cart::destroy($cartProduct);
 
-        return redirect('/')->with('message','Order Succesfully');
+        $id = $order->id;
+        return redirect('/payment/'.$id)->with('message', 'Order Succesfully');
     }
 
-    // if(Auth::user()-)
+    public function payment($id)
+    {
+        if (Auth::id()) {
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            $cartProduct = Cart::where('user_id', $user->id, Auth::id())->get();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            $order = Order::where('id', $id)->get();
+            // dd($order);
+            return view('store.shop.payment', compact('products', 'categories', 'user', 'cartItem', 'cartProduct', 'order'));
+        } else {
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $user = auth()->user();
+            return view('store.shop.checkout', compact('products', 'categories'));
+        }
+    }
 
+    public function updatePayment(Request $request, $id){
+        
+        $rules = [
+            'payment_image' =>'image|file|max:1024',
+        ];
+
+        $validateData = $request->validate($rules);
+
+        if ($request->file('payment_image')) {
+            $validateData['payment_image'] = $request->file('payment_image')->store('Payment');
+        }
+        
+        Order::where('id', $id)
+            ->update($validateData);
+        return redirect('/')->with('message', 'Order Succesfully');
+    }
 }

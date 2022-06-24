@@ -11,12 +11,30 @@
     </div>
 </div>
 <div class="container-fluid pt-5">
-    <div class="row px-xl-5">
-        <div class="col-md-12 d-flex flex-row-reverse">
-                <a href="/my-orders/{{ $orders->id }}/print" class="btn border">
-                    <i class="fa fa-print text-primary"></i> Print
-                </a>
+    <div class="row px-xl-5 mb-3">
+        @if ($orders->status == 2)
+        <div class="col-md-2 d-flex">
+            <form action="/receive-order/{{ $orders->id }}" method="post">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-border">
+                    <i class="fa fa-check text-primary"></i> 
+                    Receive Order
+                </button>
+            </form>
         </div>
+        <div class="col-md-10 d-flex flex-row-reverse">
+            <a href="/my-orders/{{ $orders->id }}/print" class="btn border">
+                <i class="fa fa-print text-primary"></i> Print
+            </a>
+        </div>
+        @else
+        <div class="col-md-12 d-flex flex-row-reverse">
+            <a href="/my-orders/{{ $orders->id }}/print" class="btn border">
+                <i class="fa fa-print text-primary"></i> Print
+            </a>
+        </div>
+        @endif
     </div>
     <div class="row px-xl-5">
         <div class="col-lg-8 mb-3">
@@ -57,6 +75,13 @@
                     <td style="width:5%">:</td>
                     <td> {{ $orders->created_at->format('d-m-Y') }} </td>
                 </tr>
+                @if($orders->status == 2)
+                <tr>
+                    <th>Shipping No</th>
+                    <td style="width:5%">:</td>
+                    <td> {{ $orders->shipping_no }} </td>
+                </tr>
+                @endif
             </table>
         </div>
         <div class="col-lg-12 table-responsive mb-5">

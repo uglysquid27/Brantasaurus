@@ -27,6 +27,8 @@ return new class extends Migration
             $table->tinyInteger('status')->default('0');
             $table->string('message')->nullable();
             $table->string('tracking_num');
+            $table->string('payment_image')->nullable();
+            $table->string('shipping_no')->nullable();
             $table->timestamps();
         });
     }

@@ -2,7 +2,7 @@
 @section('content')
 <div class="container-fluid bg-secondary mb-5">
     <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-3">My Orders</h1>
+        <h1 class="font-weight-semi-bold text-uppercase mb-3">My History Orders</h1>
         <div class="d-inline-flex">
             <p class="m-0"><a href="/">Home</a></p>
             <p class="m-0 px-2">-</p>
@@ -32,14 +32,14 @@
                         @elseif ($item->status == 1)
                         <td scope="row" class="align-middle">Process</td>
                         @elseif ($item->status == 2)
-                        <td scope="row" class="align-middle">Shipping <br> Shipping No: {{ $item->shipping_no }} </td>
+                        <td scope="row" class="align-middle">Shipping</td>
                         @elseif ($item->status == 3)
                         <td scope="row" class="align-middle">Completed</td>
                         @else
                         <td scope="row" class="align-middle">Order Reject</td>
                         @endif
                         <td class="align-middle">
-                            <a href=" /my-orders/{{ $item->id }}" class="btn btn-sm btn-primary">View</a>
+                            <a href=" /my-history/{{ $item->id }}" class="btn btn-sm btn-primary">View</a>
                         </td>
                     </tr>
                     @endforeach

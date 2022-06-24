@@ -20,7 +20,9 @@ class Order extends Model
         'zip', 
         'status', 
         'message', 
-        'tracking_num'
+        'tracking_num',
+        'payment_image',
+        'shipping_no',
     ];
 
     public function order_items(){

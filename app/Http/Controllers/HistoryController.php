@@ -6,11 +6,10 @@ use App\Models\Cart;
 use App\Models\Order;
 use App\Models\Product;
 use App\Models\Category;
-use Barryvdh\DomPDF\Facade as PDF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class OrderController extends Controller
+class HistoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,9 +23,9 @@ class OrderController extends Controller
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
-            $orders = Order::where('status', '0')->orWhere('status', '1')->orWhere('status', '2')->where('user_id', Auth::id())->get();
+            $orders = Order::where('status', '3')->where('user_id', Auth::id())->get();
             // dd($orders);
-            return view('store.order.index', compact('products', 'categories', 'cartItem', 'orders'));
+            return view('store.history.index', compact('products', 'categories', 'cartItem', 'orders'));
         } else {
             $products = Product::all();
             $categories = Category::withCount('product')->get();
@@ -70,8 +69,7 @@ class OrderController extends Controller
             $user = auth()->user();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
-            // dd($orders);
-            return view('store.order.show', compact('products', 'categories', 'cartItem', 'orders'));
+            return view('store.history.show', compact('products', 'categories', 'cartItem', 'orders'));
         } else {
             $products = Product::all();
             $categories = Category::withCount('product')->get();
@@ -112,27 +110,5 @@ class OrderController extends Controller
     public function destroy(Order $order)
     {
         //
-    }
-
-    public function receive($id){
-        $orders = Order::find($id);
-        $orders->status = 3;
-        $orders->update();
-        return redirect('/my-orders')->with('status', "Order Status Updated");
-    }
-
-    public function print($id)
-    {
-        if (Auth::id()) {
-            $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
-            $data = [
-                'orders' => $orders,
-            ];
-            $pdf = PDF::loadView('store.order.print', $data);
-            return $pdf->stream('Order Details '. $orders->tracking_num .'.pdf');
-        // return view('store.order.print', compact('orders'));
-        } else {
-            return view('store.index', compact('products', 'categories'));
-        }
     }
 }

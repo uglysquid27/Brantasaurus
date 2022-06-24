@@ -31,7 +31,7 @@
                     <div class="d-flex justify-content-end text-center py-1">
                         <div class="mx-3">
                             <i class="fa-solid fa-box-archive fa-2x text-primary"></i>
-                            <a href="" class="small text-muted mb-0 d-flex">History</a>
+                            <a href="/my-history" class="small text-muted mb-0 d-flex">History</a>
                         </div>
                         <div class="mx-3">
                             <i class="fa-solid fa-cart-flatbed fa-2x text-primary"></i>

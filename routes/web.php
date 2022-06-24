@@ -6,6 +6,7 @@ use App\Http\Controllers\ChekcoutController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardUserController;
+use App\Http\Controllers\HistoryController;
 use App\Http\Controllers\OrderAdminController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,6 +53,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //OrderDashboard
     Route::resource('/dashboard/orders', OrderAdminController::class);
     Route::get('/dashboard/orders/view-orders/{id}', [OrderAdminController::class, 'view']);
+    Route::get('/dashboard/orders/image-payment/{id}', [OrderAdminController::class, 'imagePay']);
     Route::put('update-order/{id}', [OrderAdminController::class, 'update']);
     Route::get('/dashboard/order-history', [OrderAdminController::class, 'orderHistory']);
 
@@ -87,7 +89,12 @@ Route::controller(CartController::class)->group(function(){
 Route::controller(ChekcoutController::class)->group(function(){
     Route::get('checkout', 'index')->middleware('auth');
     Route::post('place-order', 'placeOrder')->middleware('auth');
+    Route::get('payment/{id}', 'payment')->name('payment')->middleware('auth');
+    Route::put('update-payment/{id}', 'updatePayment')->middleware('auth');
 });
 
-Route::get('/my-orders/{id}/print', [OrderController::class, 'print'])->name('print');
+Route::get('/my-orders/{id}/print', [OrderController::class, 'print'])->name('print')->middleware('auth');
+Route::put('/receive-order/{id}', [OrderController::class, 'receive'])->middleware('auth');
 Route::resource('/my-orders', OrderController::class)->middleware('auth');
+
+Route::resource('my-history', HistoryController::class)->middleware('auth');
