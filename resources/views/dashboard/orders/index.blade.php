@@ -10,13 +10,14 @@
                             <a href="{{ 'order-history' }}" class="btn btn-secondary float-end">History</a>
                         </h4>
                     </div>
-                    <div class="card-body">
+                    <div class="card-body text-center">
                         <table class="table table-bordered">
                             <thead class="bg-secondary text-dark">
                                 <tr>
                                     <th>Order Date</th>
                                     <th>Tracking Number</th>
                                     <th>Total Price</th>
+                                    <th>Size</th>
                                     <th>Status</th>
                                     <th>Action</th>
                                 </tr>
@@ -28,6 +29,7 @@
                                     </td>
                                     <td class="align-middle"> {{ $item->tracking_num }} </td>
                                     <td class="align-middle"> Rp. {{ number_format($item->total_price) }} </td>
+                                    <td class="align-middle"> {{ ($item->size) }} </td>
                                     @if ($item->status == 0)
                                     <td scope="row">Pending</td>
                                     @elseif ($item->status == 1)

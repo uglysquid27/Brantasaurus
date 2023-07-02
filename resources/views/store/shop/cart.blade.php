@@ -35,6 +35,7 @@
                         <th>Image</th>
                         <th>Products</th>
                         <th>Quantity</th>
+                        <th>Size</th>
                         <th>Price</th>
                         <th>Remove</th>
                     </tr>
@@ -62,6 +63,7 @@
                                 </div>
                             </div>
                         </td>
+                        <td class="align-middle"> {{ $item->size }} </td>
                         <td class="align-middle"> {{ $total }} </td>
                         <td class="align-middle"><button class="btn btn-sm btn-primary"><a
                                     href="{{ url('deletecart/'.$item->id) }}"><i

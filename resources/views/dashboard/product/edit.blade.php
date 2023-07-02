@@ -64,6 +64,18 @@
                                     @endforeach
                                 </div>
                             </div>
+                            {{-- <div class="col-md-10 mb-3">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Size</label><br>
+                                    @foreach($size as $size)
+                                    <div class="form-check">                                        
+                                        <input class="form-check-input" name="size[]" type="checkbox"
+                                            value="{{ $size->id }}"/>
+                                        <label class="form-check-label">{{ $size->name }}</label>
+                                    </div>
+                                    @endforeach
+                                </div>
+                            </div> --}}
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="example-text-input" class="form-control-label">Quantity</label>

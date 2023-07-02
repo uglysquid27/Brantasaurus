@@ -10,6 +10,8 @@ class Product extends Model
 {
     use HasFactory, Sluggable;
 
+    // protected $table = 'products';
+
     protected $with = ['category','tag'];
     
     protected $fillable = [
@@ -25,11 +27,6 @@ class Product extends Model
     ];
 
     public function scopeFilter($query, array $filters){
-        // if (isset($filters['search']) ? $filters['search'] : false) {
-        //     $query->where('product_name', 'like', '%' . $filters['search'] . '%')
-        //     ->orWhere('description', 'like', '%' . $filters['search'] . '%');
-        // }
-
         $query->when($filters['search'] ?? false, function($query, $search){
             $query->where('product_name', 'like', '%' . $search . '%')
             ->orWhere('description', 'like', '%' . $search . '%');
@@ -46,10 +43,9 @@ class Product extends Model
                 $query->where('slug', $tag);
             });
         });
+        
     }
 
-        
-    
     public function getRouteKeyName()
     {
         return 'slug';
@@ -61,7 +57,7 @@ class Product extends Model
 
     public function tag(){
         return $this->belongsToMany(Tag::class, 'product_tag');
-    }
+    } 
 
     public function sluggable(): array
     {
@@ -69,6 +65,8 @@ class Product extends Model
             'slug' => [
                 'source' => 'product_name'
             ]
+
         ];
     }
+
 }

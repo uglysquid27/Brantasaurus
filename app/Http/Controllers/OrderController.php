@@ -23,10 +23,11 @@ class OrderController extends Controller
             $products = Product::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
+            $sizes = Cart::where('user_id', $user->id)->get();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
-            $orders = Order::where('status', '0')->orWhere('status', '1')->orWhere('status', '2')->where('user_id', Auth::id())->get();
+            $orders = Order::where('status', '0')->orWhere('status', '1')->orWhere('status', '2')->where('user_id', $user->id)->get();
             // dd($orders);
-            return view('store.order.index', compact('products', 'categories', 'cartItem', 'orders'));
+            return view('store.order.index', compact('products', 'categories', 'cartItem', 'sizes', 'orders'));
         } else {
             $products = Product::all();
             $categories = Category::withCount('product')->get();
@@ -68,10 +69,11 @@ class OrderController extends Controller
             $products = Product::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
+            $cartItems = Cart::where('user_id', Auth::id())->get();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             $orders = Order::where('id', $id)->where('user_id', Auth::id())->first();
             // dd($orders);
-            return view('store.order.show', compact('products', 'categories', 'cartItem', 'orders'));
+            return view('store.order.show', compact('products', 'categories', 'cartItem', 'cartItems', 'orders'));
         } else {
             $products = Product::all();
             $categories = Category::withCount('product')->get();

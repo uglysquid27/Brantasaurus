@@ -11,7 +11,7 @@
                                 <p class="text-sm mb-0 text-uppercase font-weight-bold">Add</p>
                                 <h5 class="font-weight-bolder">
                                     <a href="{{ '/dashboard/tags/create' }}">
-                                        Tags</a>
+                                        Sizes</a>
                                 </h5>
                             </div>
                         </div>
@@ -29,7 +29,7 @@
         <div class="col-12">
             <div class="card mb-4">
                 <div class="card-header pb-0">
-                    <h6>Tags Table</h6>
+                    <h6>Size Table</h6>
                 </div>
                 <div class="card-body px-0 pt-0 pb-2">
                     <div class="table-responsive p-0">
@@ -37,10 +37,10 @@
                             <thead>
                                 <tr>
                                     <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                        Tag Name</th>
+                                        Size Name</th>
                                     <th
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                                        Tag Slug</th>
+                                        Size Slug</th>
                                     <th
                                         class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                                         Action</th>

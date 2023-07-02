@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UserController;
 use App\Models\Category;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 /*
 |--------------------------------------------------------------------------
@@ -42,6 +42,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     //Tag
     Route::get('/dashboard/tags/checkSlug', [TagController::class, 'checkSlug']);
     Route::resource('/dashboard/tags', TagController::class);
+
+    //Size
+    Route::get('/dashboard/size/checkSlug', [SizeController::class, 'checkSlug']);
+    Route::resource('/dashboard/size', SizeController::class);
 
     //Profile
     Route::resource('/dashboard/profile', UserController::class);
@@ -95,6 +99,7 @@ Route::controller(ChekcoutController::class)->group(function(){
 
 Route::get('/my-orders/{id}/print', [OrderController::class, 'print'])->name('print')->middleware('auth');
 Route::put('/receive-order/{id}', [OrderController::class, 'receive'])->middleware('auth');
+Route::get('/my-orders/{id}', [OrderController::class, 'show'])->middleware('auth');
 Route::resource('/my-orders', OrderController::class)->middleware('auth');
 
 Route::resource('my-history', HistoryController::class)->middleware('auth');

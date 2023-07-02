@@ -42,7 +42,7 @@
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Category</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
-                                            Tag</th>
+                                            Size</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Quantity</th>
                                         <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -78,6 +78,15 @@
                                                     @endforelse
                                                 </p>
                                             </td>
+                                            {{-- <td>
+                                                <p class="text-md text-secondary mb-0">
+                                                    @forelse($product->size as $size)
+                                                        <span class="badge bg-secondary"> {{ $product->size->name }} </span>
+                                                    @empty
+                                                        <p>No size</p>
+                                                    @endforelse
+                                                </p>
+                                            </td> --}}
                                             <td>
                                                 @if ($product->quantity > 0)
                                                     <p class="text-md text-secondary mb-0">{{ $product->quantity }}</p>

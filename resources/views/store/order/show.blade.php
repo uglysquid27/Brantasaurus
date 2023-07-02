@@ -92,6 +92,7 @@
                         <th>Name</th>
                         <th>Quantity</th>
                         <th>Price</th>
+                        <th>Size</th>
                         <th>Image</th>
                     </tr>
                 </thead>
@@ -101,6 +102,7 @@
                         <td class="align-middle"> {{ $item->product->product_name }} </td>
                         <td class="align-middle"> {{ $item->quantity }} </td>
                         <td class="align-middle">Rp. {{ number_format($item->price) }} </td>
+                        <td class="align-middle"> {{ $item->size }} </td>
                         <td class="align-middle"> <img src="{{ asset('storage/'.$item->product->image) }}" alt=""
                                 class="img-fluid" style="width: 150px;"> </td>
                     </tr>

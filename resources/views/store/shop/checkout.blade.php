@@ -65,6 +65,7 @@
                                 <tr>
                                     <th>Name</th>
                                     <th>Quanity</th>
+                                    <th>Size</th>
                                     <th>Price</th>
                                 </tr>
                             </thead>
@@ -76,6 +77,7 @@
                                 <tr>
                                     <td>{{ $item->product->product_name }}</td>
                                     <td>{{ $item->quantity }}</td>
+                                    <td>{{ $item->size }}</td>
                                     <td>{{ $item->product->sell_price }}</td>
                                 </tr>
                                 @php $total_amount += $item->product->sell_price * $item->quantity; @endphp

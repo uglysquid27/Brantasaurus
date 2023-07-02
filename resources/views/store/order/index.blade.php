@@ -18,6 +18,7 @@
                     <tr>
                         <th>Tracking Number</th>
                         <th>Total Price</th>
+                        <th>Size</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -27,6 +28,7 @@
                     <tr>
                         <td class="align-middle"> {{ $item->tracking_num }} </td>
                         <td class="align-middle"> Rp. {{ number_format($item->total_price) }} </td>
+                        <td class="align-middle"> {{ ($item->size) }}</td>
                         @if ($item->status == 0)
                         <td scope="row" class="align-middle">Pending</td>
                         @elseif ($item->status == 1)

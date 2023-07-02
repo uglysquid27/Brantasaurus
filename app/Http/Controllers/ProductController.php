@@ -55,10 +55,21 @@ class ProductController extends Controller
             'image' =>'image|file|max:1024',
             'tag' =>'required',
         ]);
+           
 
         if ($request->file('image')) {
             $validateData['image'] = $request->file('image')->store('Product');
         }
+
+        // if($request->size){
+        //     foreach($request->size as $key => $size){
+        //         $product->productSizes()->create([
+        //             'product_id' => $product->id,
+        //             'size_id' => $size,
+        //             'quantity' => $request->sizequantity[$key] ?? 0
+        //         ]);
+        //     }
+        // }
 
         $validateData['small_description'] = Str::limit(strip_tags($request->description), 200);
 
@@ -89,6 +100,7 @@ class ProductController extends Controller
     {
         $tags = Tag::all();
         $product_tag = $product->tag;
+        // $product_size = $product->size;
         $diff = $tags->diff($product_tag);
         return view('dashboard.product.edit', compact('diff', 'tags'), [
             'product' => $product,

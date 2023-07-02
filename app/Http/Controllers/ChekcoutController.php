@@ -17,11 +17,12 @@ class ChekcoutController extends Controller
     {
         if (Auth::id()) {
             $products = Product::select('*')->latest()->take(4)->get();
+            $carts = Cart::all();
             $categories = Category::withCount('product')->get();
             $user = auth()->user();
             $cartProduct = Cart::where('user_id', $user->id, Auth::id())->get();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
-            return view('store.shop.checkout', compact('products', 'categories', 'user', 'cartItem', 'cartProduct'));
+            return view('store.shop.checkout', compact('products', 'categories', 'user', 'carts', 'cartItem', 'cartProduct'));
         } else {
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
@@ -48,12 +49,13 @@ class ChekcoutController extends Controller
         $cartitems_total = Cart::where('user_id', Auth::id())->get();
         foreach ($cartitems_total as $prod) {
             $total += $prod->product->sell_price * $prod->quantity;
+            $sizes = $prod->size;
         }
-
         $order->total_price = $total;
+        $order->size = $sizes;
         $order->tracking_num = 'num'.rand(1111, 9999);
         $order->save();
-
+        
         $order->id;
         $cartProduct = Cart::where('user_id', Auth::id())->get();
         foreach ($cartProduct as $cart) {
@@ -61,6 +63,7 @@ class ChekcoutController extends Controller
                 'order_id' => $order->id,
                 'product_id' => $cart->product_id,
                 'quantity' => $cart->quantity,
+                'size' => $cart->size,
                 'price' => $cart->product->sell_price,
             ]);
 

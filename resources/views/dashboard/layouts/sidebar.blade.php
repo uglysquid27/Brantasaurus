@@ -6,7 +6,7 @@
         <a class="navbar-brand m-0" href=" https://demos.creative-tim.com/argon-dashboard/pages/dashboard.html "
             target="_blank">
 
-            <span class="ms-1 font-weight-bold">K-Merch Dashboard</span>
+            <span class="ms-1 font-weight-bold">Admin Dashboard</span>
         </a>
     </div>
     <hr class="horizontal dark mt-0">
@@ -48,9 +48,19 @@
                         class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                         <i class="fa fa-tags text-secondary text-sm opacity-10" aria-hidden="true"></i>
                     </div>
-                    <span class="nav-link-text ms-1">Tag List</span>
+                    <span class="nav-link-text ms-1">Size List</span>
                 </a>
             </li>
+            {{-- <li class="nav-item">
+                <a class="nav-link {{ Request::is('dashboard/size*') ? 'active' : '' }}"
+                    href="{{ '/dashboard/size' }}">
+                    <div
+                        class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                        <i class="fa fa-tags text-secondary text-sm opacity-10" aria-hidden="true"></i>
+                    </div>
+                    <span class="nav-link-text ms-1">Size List</span>
+                </a>
+            </li> --}}
             <li class="nav-item">
                 <a class="nav-link {{ Request::is('dashboard/orders*') ? 'active' : '' }}"
                     href="{{ '/dashboard/orders' }}">

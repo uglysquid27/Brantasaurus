@@ -24,10 +24,6 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
             AdminSeeder::class,
-            CategorySeeder::class,
-            TagSeeder::class,
-            ProductSeeder::class,
-            ProductTagSeeder::class,
         ]);
     }
 }

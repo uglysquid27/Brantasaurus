@@ -3,12 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>K-Merch Store</title>
+    <meta name="viewport" content="width=device-width, initial-scale">
+    <title>Utapes Store</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     {{-- <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description"> --}}
 
-    <link rel="icon" type="image/png" href="/assets/img/KmerchLogo.png">
+    <link rel="icon" type="image/png" href="/assets/img/uslogo.jpeg">
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

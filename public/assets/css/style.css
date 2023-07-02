@@ -9953,3 +9953,40 @@ a.text-dark:focus {
     max-height: 150px;
     margin-bottom: 1rem;
 }
+
+#text-decoration-none d-block d-lg-none{
+    display: hidden;
+    width: 48px;
+    height: 48px;
+    background-size: 37px;
+}
+
+@media screen and (max-width: 758px){
+    *{
+        margin: 0;
+    }
+    
+
+    #text-decoration-none d-block d-lg-none{
+        display: inline-block;
+        background: rgb(40, 50, 60);
+        border: 1px solid gray;
+        border-radius: 5px;
+    }
+
+    nav ul, nav:active ul{
+        display: none;
+        position: absolute;
+        z-index: 1000;
+        padding: 10px;
+        background: #191929;
+        right: 25px;
+        top: 30px;
+        border: 2px solid #f0f0f0;
+        border-radius: 8px 8px 8px 8px;
+        width: 43%;
+        opacity: 0,92;
+    }
+
+
+}
