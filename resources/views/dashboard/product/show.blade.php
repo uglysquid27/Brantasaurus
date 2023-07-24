@@ -31,6 +31,8 @@
                         <p>{{ $product->quantity }}</p>
                         <h6 class="my-1">Harga</h6>
                         <p>Rp. {{ $product->price }}</p>
+                        <h6 class="my-1">Url</h6>
+                        <p>{{ $product->url }}</p>
                         <h6 class="my-1">Deskripsi Produk</h6>
                         <p>{{ $product->description }}</p>
                     </div>

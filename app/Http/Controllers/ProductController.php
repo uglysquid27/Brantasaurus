@@ -52,6 +52,7 @@ class ProductController extends Controller
             'price' => 'required',
             'sell_price' => 'required',
             'description' => 'required',
+            'url' => 'required',
             'image' =>'image|file|max:1024',
             'tag' =>'required',
         ]);
@@ -125,6 +126,7 @@ class ProductController extends Controller
             'price' => 'required',
             'sell_price' => 'required',
             'description' => 'required',
+            'url' => 'required',
             'image' =>'image|file|max:1024',
         ];
 

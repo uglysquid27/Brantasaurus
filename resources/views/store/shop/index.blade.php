@@ -39,14 +39,15 @@
                             <a href="/shop/{{ $product->slug }}" class="btn btn-sm text-dark p-0"><i
                                     class="fas fa-eye text-primary mr-1"></i> View
                                 Detail</a>
-                        <form action="{{ url('addcart', $product->id) }}" method="post">
+                                <a href="{{$product->url}}" class="btn btn-sm text-dark p-0"><i class="fa fa-shopping-bag text-primary mr-1"></i> Shoope</a>
+                        <!-- <form action="{{ url('addcart', $product->id) }}" method="post">
                             @csrf
                             <input type="hidden" name="product_id" value="{{ $product->id}}" class="product_id">
                             <input type="hidden" value="1" name="quantity" class="form-control qty-input text-center" style="width:70px; height:35px">
                             <i class="fas fa-shopping-cart text-primary mr-1"></i> 
                                     <input type="submit" class="btn btn-sm text-dark p-0" value="Add to Cart">
                             {{-- <input type="submit" class="btn btn-primary px-3 addToCartBtn float-start" value="Add to Cart"> --}}
-                         </form>   
+                         </form>    -->
                         </div>
                     </div>
                 </div>

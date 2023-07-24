@@ -103,6 +103,13 @@
                                         value="{{old('desc',$product->description)}}">
                                 </div>
                             </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="example-text-input" class="form-control-label">Url</label>
+                                    <input class="form-control" type="text" name="url"
+                                        value="{{old('url',$product->url)}}">
+                                </div>
+                            </div>
                         </div>
                         <div class="row">
                             <input type="hidden" name="oldImage" value="{{ $product->image }}">

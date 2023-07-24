@@ -7,34 +7,37 @@
         {{ session()->get('message') }}
     </div>
 @endif
+
 <div id="header-carousel" class="carousel slide" data-ride="carousel">
+
+
+
+             <ol class="carousel-indicators">
+                @foreach($carousels as $carousel)
+                <li data-target=".carouselExampleCaptions" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                @endforeach
+            </ol>
+
     <div class="carousel-inner">
-        <div class="carousel-item active" style="height: 500px;">
-            <img class="img-fluid" src="assets/img/sp1.png" alt="Image">
+    @foreach($carousels as $carousel)
+        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="height: 500px;">
+   
+            <img class="img-fluid" src="{{ asset('storage/'.$carousel->image) }}" alt="Image">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                 <div class="p-3" style="max-width: 700px;">
-                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                        Order</h4>
-                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Get Your Shoes Now!</h3>
+                    <h4 class="text-light text-uppercase font-weight-medium mb-3">{{ $carousel->promo }} </h4>
+                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">{{ $carousel->desc }} </h3>
                     <a href="/shop" class="btn rounded btn-light py-2 px-3 {{ Request::is('shop') ?
                     'active' : '' }}">Shop Now</a>
                     {{-- <a href="" class="btn btn-light py-2 px-3">Shop Now</a> --}}
                 </div>
             </div>
+            
         </div>
-        <div class="carousel-item" style="height: 500px;">
-            <img class="img-fluid" src="assets/img/sd1.png" alt="Image">
-            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
-                <div class="p-3" style="max-width: 700px;">
-                    <h4 class="text-light text-uppercase font-weight-medium mb-3">10% Off Your First
-                        Order</h4>
-                    <h3 class="display-4 text-white font-weight-semi-bold mb-4">Reasonable Price</h3>
-                    <a href="/shop" class="btn rounded btn-light py-2 px-3 {{ Request::is('shop') ? '
-                    active' : '' }}">Shop Now</a>
-                </div>
-            </div>
-        </div>
+        @endforeach
     </div>
+    
+   
     <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
         <div class="btn btn-dark" style="width: 45px; height: 45px;">
             <span class="carousel-control-prev-icon mb-n2"></span>
@@ -46,6 +49,7 @@
         </div>
     </a>
 </div>
+
 <!-- Carousel End -->
 
 <!-- Featured Start -->

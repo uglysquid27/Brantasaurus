@@ -49,6 +49,9 @@
                                             Price</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                            Url</th>
+                                        <th
+                                            class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                                             Image</th>
                                         <th
                                             class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
@@ -96,6 +99,9 @@
                                             </td>
                                             <td>
                                                 <p class="text-md text-secondary mb-0">Rp. {{ $product->price }}</p>
+                                            </td>
+                                            <td>
+                                                <p class="text-md text-secondary mb-0">{{ $product->url }}</p>
                                             </td>
                                             <td class="align-middle text-center text-sm">
                                                 <img class="img-fluid mt-3" src="{{ asset('storage/' . $product->image) }}"

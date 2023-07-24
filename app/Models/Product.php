@@ -22,6 +22,7 @@ class Product extends Model
         'price',
         'sell_price',
         'description',
+        'url',
         'small_description',
         'image',
     ];

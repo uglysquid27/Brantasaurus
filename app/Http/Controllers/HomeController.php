@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Carousel;
 use App\Models\User;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -27,14 +28,16 @@ class HomeController extends Controller
         if(Auth::id()){
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
             $user = auth()->user();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
-            return view('store.index', compact('products', 'categories', 'cartItem'));
+            return view('store.index', compact('products', 'carousels', 'categories', 'cartItem'));
         }else{
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
             $user = auth()->user();
-            return view('store.index', compact('products', 'categories'));
+            return view('store.index', compact('products', 'carousels', 'categories'));
         }
         
     }

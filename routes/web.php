@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CarouselController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\ChekcoutController;
 use App\Http\Controllers\ProductController;
@@ -31,6 +32,10 @@ use App\Models\Category;
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
+    //Carousel
+    Route::get('/dashboard/carousel/checkSlug', [CarouselController::class, 'checkSlug']);
+    Route::resource('/dashboard/carousel', CarouselController::class);
+    
     //Category
     Route::get('/dashboard/category/checkSlug', [CategoryController::class, 'checkSlug']);
     Route::resource('/dashboard/category', CategoryController::class);

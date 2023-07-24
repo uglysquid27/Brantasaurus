@@ -25,7 +25,7 @@ class OrderController extends Controller
             $user = auth()->user();
             $sizes = Cart::where('user_id', $user->id)->get();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
-            $orders = Order::where('status', '0')->orWhere('status', '1')->orWhere('status', '2')->where('user_id', $user->id)->get();
+            $orders = Order::where('user_id', $user->id)->where('status', '0')->orWhere('status', '1')->orWhere('status', '2')->get();
             // dd($orders);
             return view('store.order.index', compact('products', 'categories', 'cartItem', 'sizes', 'orders'));
         } else {
