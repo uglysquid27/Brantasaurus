@@ -1,28 +1,25 @@
 @extends('store.layouts.main')
 @section('content')
-<!-- Page Header Start -->
-{{-- <div class="container-fluid bg-secondary mb-5">
-    <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
-        <h1 class="font-weight-semi-bold text-uppercase mb-3">Our Shop</h1>
-        <div class="d-inline-flex">
-            <p class="m-0"><a href="">Home</a></p>
-            <p class="m-0 px-2">-</p>
-            <p class="m-0">Shop</p>
-        </div>
-    </div>
-</div> --}}
-<!-- Page Header End -->
 
 
-<!-- Shop Start -->
+<!-- Search Start -->
 <div class="container-fluid pt-5">
-    <div class="row px-xl-5">
-        <div class="col-lg-12 col-md-12">
-            
+    <div class="vh-100 d-flex align-items-center justify-content-center">
+        <div class="col-lg-8 col-md-12">
+            <form action="/shop">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control input-text" placeholder="Search products...." name="search">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-dark btn-lg" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+
+            </form>
         </div>
         <!-- Shop Product End -->
     </div>
 </div>
-<!-- Shop End -->
+<!-- Search End -->
 
 @endsection
