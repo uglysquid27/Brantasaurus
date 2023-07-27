@@ -42,7 +42,7 @@ class CarouselController extends Controller
             'promo' => 'required|max:255',
             'slug' => 'required|unique:carousels',
             'desc' => 'required',
-            'image' =>'image|file|max:10240',
+            'image' =>'mimes:jpg,jpeg,png,mp4,mkv|file',
         ]);
 
         if ($request->file('image')) {

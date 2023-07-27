@@ -2512,16 +2512,41 @@ fieldset:disabled a.btn {
 }
 
 .btn-primary {
-    color: #212529;
-    background-color: #D19C97;
-    border-color: #D19C97;
+    color: #fff;
+    background-color: #545454;
+    /* border-color: #D19C97; */
 }
 
 .btn-primary:hover {
     color: #fff;
-    background-color: #c5837c;
-    border-color: #c17a74;
+    background-color: #212121;
+    /* border-color: #c17a74; */
 }
+
+.button {
+    --c:  #212121; /* the color*/
+    
+    box-shadow: 0 0 0 .1em inset var(--c); 
+    --_g: linear-gradient(var(--c) 0 0) no-repeat;
+    background: 
+      var(--_g) calc(var(--_p,0%) - 100%) 0%,
+      var(--_g) calc(200% - var(--_p,0%)) 0%,
+      var(--_g) calc(var(--_p,0%) - 100%) 100%,
+      var(--_g) calc(200% - var(--_p,0%)) 100%;
+    background-size: 50.5% calc(var(--_p,0%)/2 + .5%);
+    outline-offset: .1em;
+    transition: background-size .4s, background-position 0s .4s;
+  }
+  .button:hover {
+    --_p: 100%;
+    transition: background-position .4s, background-size 0s;
+  }
+  .alert-link:active {
+    box-shadow: 0 0 9e9q inset #212121; 
+    background-color: var(--c);
+    color: #fff !important;
+  }
+  
 
 .btn-primary:focus,
 .btn-primary.focus {
@@ -6436,7 +6461,7 @@ a.close.disabled {
 }
 
 .bg-primary {
-    background-color: #D19C97 !important;
+    background-color: #212121 !important;
 }
 
 a.bg-primary:hover,
@@ -9610,17 +9635,52 @@ button.bg-dark:focus {
     font-style: italic !important;
 }
 
+.text-white-button {
+    color: #000 !important;
+}
+
+.text-white-button:hover {
+    color: #fff !important;
+}
+
 .text-white {
     color: #fff !important;
 }
 
+.text-white-footer {
+    color: #fff !important;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .text-white-footer::after {
+    color: #fff !important;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 50%;
+    height: 2px;
+    background-color: white; /* Change this to the desired underline color */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease; /* Adjust the duration as per your preference */
+  }
+  
+  .text-white-footer:hover::after {
+    transform: scaleX(1);
+  }
+
 .text-primary {
-    color: #D19C97 !important;
+    color: #212121 !important;
 }
 
-a.text-primary:hover,
+.text-primary:hover{
+    color: #fff !important;
+    background: #212121 !important;
+}
 a.text-primary:focus {
-    color: #ba6a62 !important;
+    color: #fff !important;
 }
 
 .text-secondary {

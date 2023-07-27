@@ -78,6 +78,7 @@ Route::controller(HomeController::class)->group(function () {
     Route::get('/shop', 'shop')->name('shop');
     Route::get('/shop/{product:slug}', 'detail');
     Route::get('/contact', 'contact');    
+    Route::get('/search', 'search');
 });
 
 Route::resource('/profile', UserController::class)->middleware('auth');

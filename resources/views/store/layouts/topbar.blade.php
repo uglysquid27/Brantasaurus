@@ -1,4 +1,4 @@
-<!-- Topbar Start -->
+<!-- Topbar Start
 <div class="d-flex align-items-center justify-content-center py-3 px-xl-5">
     <div class="col-lg-3 d-lg-block">
         <a href="" class="text-decoration-none">
@@ -53,4 +53,4 @@
     @endif
 </div>
 </div>
-<!-- Topbar End -->
+Topbar End -->

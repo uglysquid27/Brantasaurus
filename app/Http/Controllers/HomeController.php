@@ -41,6 +41,24 @@ class HomeController extends Controller
         }
         
     }
+    public function search()
+    {
+        if(Auth::id()){
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            return view('store.search', compact('products', 'carousels', 'categories', 'cartItem'));
+        }else{
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            return view('store.search', compact('products', 'carousels', 'categories'));
+        }
+        
+    }
     public function shop()
     {       
         if(Auth::id()){

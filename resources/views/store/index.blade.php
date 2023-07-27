@@ -85,7 +85,7 @@
 
 
 <!-- Categories Start -->
-<div class="container-fluid pt-5">
+<div class="pt-5">
 <h1 class="text-center font-weight-semi-bold m-0">CATEGORIES</h1>
     <div class="row px-xl-5 pb-3 ">
         <!-- justify-content-center bisa tambah ini kalau mau dicenter -->
@@ -155,9 +155,9 @@
                         </div>
                     </div>
                     <div class="card-footer d-flex justify-content-between bg-light border">
-                        <a href="/shop/{{ $product->slug }}" class="btn btn-sm text-dark p-0"><i
-                                class="fas fa-eye text-primary mr-1"></i>View
-                            Detail</a>
+                        <a href="/shop/{{ $product->slug }}" class=" text-primary p-0"><div><i
+                                class="fas fa-eye mr-1"></i>View
+                            Detail</div></a>
                         {{-- <a href="" class="btn btn-sm text-dark p-0"><i
                                 class="fas fa-shopping-cart text-primary mr-1"></i>Add To Cart</a> --}}
                     </div>
