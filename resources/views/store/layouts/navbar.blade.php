@@ -29,7 +29,8 @@
                             </div>
                             @endif
                             <a href="/contact" class="text-primary nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
-                            <div class="navbar-nav justify-content-end">
+                        </div>
+                        <div class="navbar-nav justify-content-end">
                                 <div class="nav-item dropdown">
                                     @if (Route::has('login'))
                                     @auth
@@ -61,7 +62,6 @@
                                     @endif
                                 </div>
                             </div>
-                        </div>
                         @if (Route::has('login'))
                         @auth
                         <a href="/cart" class="btn border text-primary">

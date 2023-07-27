@@ -23,10 +23,8 @@
                 @if($product->quantity >0)
                 <div class="col-lg-3 pb-1 text-center">
                     <div class="card product-item border-0 mb-4">
-                        <div
-                            class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
-                            <img class="img-fluid" src="{{ asset('storage/'.$product->image) }}" alt=""
-                                style="object-fit: cover; width: 300px; height: 300px;">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                            <img class="img-fluid" src="{{ asset('storage/'.$product->image) }}" alt="" style="object-fit: cover; width: 300px; height: 300px;">
                         </div>
                         <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3"> {{ $product->product_name }} </h6>
@@ -36,18 +34,11 @@
                             </div>
                         </div>
                         <div class="card-footer d-flex justify-content-between bg-light border">
-                            <a href="/shop/{{ $product->slug }}" class="btn btn-sm text-dark p-0"><i
-                                    class="fas fa-eye text-primary mr-1"></i> View
-                                Detail</a>
-                                <a href="{{$product->url}}" class="btn btn-sm text-dark p-0"><i class="fa fa-shopping-bag text-primary mr-1"></i> Shoope</a>
-                        <!-- <form action="{{ url('addcart', $product->id) }}" method="post">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id}}" class="product_id">
-                            <input type="hidden" value="1" name="quantity" class="form-control qty-input text-center" style="width:70px; height:35px">
-                            <i class="fas fa-shopping-cart text-primary mr-1"></i> 
-                                    <input type="submit" class="btn btn-sm text-dark p-0" value="Add to Cart">
-                            {{-- <input type="submit" class="btn btn-primary px-3 addToCartBtn float-start" value="Add to Cart"> --}}
-                         </form>    -->
+                            <a href="/shop/{{ $product->slug }}" class=" text-primary p-0">
+                                <div><i class="fas fa-eye mr-1"></i>View
+                                    Detail</div>
+                            </a>
+                            <a href="{{$product->url}}" class="text-primary p-0"><i class="fa fa-shopping-bag mr-1"></i> Shoope</a>
                         </div>
                     </div>
                 </div>

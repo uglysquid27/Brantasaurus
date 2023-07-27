@@ -18,9 +18,9 @@
                 @endforeach
             </ol>
 
-    <div class="carousel-inner">
+    <div class="carousel-inner ">
     @foreach($carousels as $carousel)
-        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="height: 500px;">
+        <div class="carousel-item {{ $loop->first ? 'active' : '' }}" style="height: 800px;">
    
             <img class="img-fluid" src="{{ asset('storage/'.$carousel->image) }}" alt="Image">
             <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
@@ -137,7 +137,7 @@
     <!-- Products Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">Newest Products</span></h2>
+            <h2 class="section-title px-5"><span class="px-2">Latest Products</span></h2>
         </div>
 
         <div class="row px-xl-5 pb-3 justify-content-center">
@@ -165,7 +165,7 @@
             </div>
             @endforeach
             <div class="col-lg-12 col-md-6 col-sm-12 pb-1 text-center">
-            <a href="/shop" class="btn btn-outline-primary py-md-2 px-md-3">Show More</a>
+            <a href="/shop" class="btn btn-outline-dark py-md-2 px-md-3">Show More</a>
             </div>
         </div>        
     </div>

@@ -90,9 +90,9 @@ Route::get('/categories', function(){
 });
 
 Route::controller(CartController::class)->group(function(){
-    Route::post('/addcart/{id}', 'addcart');
-    Route::get('/cart', 'showcart');
-    Route::get('/updatecart/{id}/{quantity}', 'update');
+    Route::post('/addcart/{id}', 'addcart')->middleware('auth');
+    Route::get('/cart', 'showcart')->middleware('auth');
+    Route::get('/updatecart/{id}/{quantity}', 'update')->middleware('auth');
     Route::get('/deletecart/{id}', 'destroy');    
 });
 
