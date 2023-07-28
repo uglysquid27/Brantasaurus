@@ -4696,7 +4696,6 @@ input[type="button"].btn-block {
     word-wrap: break-word;
     background-color: #fff;
     background-clip: border-box;
-    border: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card>hr {
@@ -4753,13 +4752,11 @@ input[type="button"].btn-block {
     padding: 0.75rem 1.25rem;
     margin-bottom: 0;
     background-color: rgba(0, 0, 0, 0.03);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-footer {
     padding: 0.75rem 1.25rem;
     background-color: rgba(0, 0, 0, 0.03);
-    border-top: 1px solid rgba(0, 0, 0, 0.125);
 }
 
 .card-header-tabs {
@@ -9687,6 +9684,30 @@ button.bg-dark:focus {
   }
   
   .text-white-footer:hover::after {
+    transform: scaleX(1);
+  }
+
+  .text-dark-footer {
+    color: #000 !important;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .text-dark-footer::after {
+    color: #000 !important;
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -2px;
+    width: 100%;
+    height: 2px;
+    background-color: black; /* Change this to the desired underline color */
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease; /* Adjust the duration as per your preference */
+  }
+  
+  .text-dark-footer:hover::after {
     transform: scaleX(1);
   }
 

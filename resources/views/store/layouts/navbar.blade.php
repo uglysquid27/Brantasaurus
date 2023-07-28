@@ -13,12 +13,12 @@
 
                     <div class="navbar-collapse" id="navbarCollapse">
                         <div class="navbar-nav mr-auto py-0">
-                            <a href="/" class="text-primary nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
-                            <a href="/shop" class="text-primary nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">Shop</a>
+                            <a href="/" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
+                            <a href="/shop" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">Shop</a>
                             @if (Request::is('login') or Route::is('register'))
                             @else
                             <div class="nav-item dropdown">
-                                <a href="#" class="text-primary nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
+                                <a href="#" class="text-dark-footer font-weight-light nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
                                 <div class="dropdown-menu rounded-0 m-0">
                                     @foreach ($categories as $category)
                                     <a href="/shop?category={{ $category->slug }}" class="dropdown-item">
@@ -28,13 +28,13 @@
 
                             </div>
                             @endif
-                            <a href="/contact" class="text-primary nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
+                            <a href="/contact" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
                         </div>
                         <div class="navbar-nav justify-content-end">
                                 <div class="nav-item dropdown">
                                     @if (Route::has('login'))
                                     @auth
-                                    <a href="#" class="text-primary nav-link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name }}</a>
+                                    <a href="#" class="text-dark-footer nav-link dropdown-toggle" data-toggle="dropdown">{{Auth::user()->name }}</a>
                                     <div class="dropdown-menu rounded-0 m-0">
                                         @can('admin')
                                         <a href="/dashboard" class="dropdown-item">Dashboard</a>
@@ -71,12 +71,12 @@
                             <i class="fa fa-search"></i>
                         </a>
                         @else
-                        <a href="{{ route('login') }}" class="text-primary nav-item nav-link {{ Request::is('login') ? 'active' : ''}}">Log in</a>
+                        <a href="{{ route('login') }}" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('login') ? 'active' : ''}}">Sign in</a>
 
                         @if (Route::has('register'))
-                        <a href="{{ route('register') }}" class="text-primary nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
+                        <a href="{{ route('register') }}" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('register') ? 'active' : ''}}">Register</a>
                         @endif
-                        <a href="search" class="input-group-text bg-transparent text-primary">
+                        <a href="search" class="bg-transparent text-primary">
                             <i class="fa fa-search"></i>
                         </a>
                     </div>

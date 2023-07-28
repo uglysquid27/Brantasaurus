@@ -5,7 +5,7 @@
         <div class="d-flex flex-column align-items-center justify-content-center" style="min-height: 300px">
             <h1 class="font-weight-semi-bold text-uppercase mb-3">Contact Us</h1>
             <div class="d-inline-flex">
-                <p class="m-0"><a href="">Home</a></p>
+                <p class="m-0"><a class="text-primary" href="">Home</a></p>
                 <p class="m-0 px-2">-</p>
                 <p class="m-0">Contact</p>
             </div>
@@ -25,13 +25,13 @@
                 <p>Welcome to USFootwear! If you have any questions, comments, or need assistance with your online shopping experience, don't hesitate to reach out to us. Our team is ready to assist you in finding the perfect footwear for your needs. Happy shopping!</p>
                 <div class="d-flex flex-column mb-3">
                     <h5 class="font-weight-semi-bold mb-3">Store</h5>
-                    <p class="mb-2"><i class="fa fa-map-marker-alt text-primary mr-3"></i>Jl. Mayjend Panjaitan No.4, Penanggungan, Kec. Klojen, Kota Malang, Jawa Timur</p>
-                    <p><a href="https://www.instagram.com/usfootwear_official/" class="text-primary mr-3"><i
-                                    class="fab fa-instagram text-primary mr-3"></i> usfootwear_official</a></p>
-                    <p><a href="https://wa.me/+6282140671131" class="text-primary mr-3"><i
-                                    class="fa fa-phone-alt text-primary mr-3"></i> +62 821-4067-1131</a></p>
-                    <p><a href="https://shopee.co.id/usfootwear" class="text-primary mr-3"><i
-                                    class="fa fa-shopping-bag text-primary mr-3"></i> Usfootwear</a></p>
+                    <p class="mb-2"><i class="fa fa-map-marker-alt text-dark mr-3"></i>Jl. Mayjend Panjaitan No.4, Penanggungan, Kec. Klojen, Kota Malang, Jawa Timur</p>
+                    <p><a href="https://www.instagram.com/usfootwear_official/" class="text-dark-footer mr-3"><i
+                                    class="fab fa-instagram text-dark-footer mr-3"></i> usfootwear_official</a></p>
+                    <p><a href="https://wa.me/+6282140671131" class="text-dark-footer mr-3"><i
+                                    class="fa fa-phone-alt text-dark-footer mr-3"></i> +62 821-4067-1131</a></p>
+                    <p><a href="https://shopee.co.id/usfootwear" class="text-dark-footer mr-3"><i
+                                    class="fa fa-shopping-bag text-dark-footer mr-3"></i> Usfootwear</a></p>
                 </div>
             </div>
         </div>
