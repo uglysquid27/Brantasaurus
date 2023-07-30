@@ -12,19 +12,12 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Google Web Fonts -->
-    <!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
-        rel="stylesheet"> -->
         <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;1,100;1,200&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
-
-    <!-- Libraries Stylesheet -->
-    {{-- <link href="assets/lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet"> --}}
 
     <!-- Customized Bootstrap Stylesheet -->
     <link href="/assets/css/style.css" rel="stylesheet">
@@ -43,22 +36,13 @@
     @endif
 
     <!-- Back to Top -->
-    <a href="#" class="btn btn-primary back-to-top"><i class="fa fa-angle-double-up"></i></a>
+    <a href="https://wa.me/+6282140671131" class="btn back-to-top"><i class="fab fa-whatsapp-square fa-3x" style="color: #65cd2d;"></i></a>
 
 
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    {{-- <script src="lib/easing/easing.min.js"></script> --}}
-    {{-- <script src="lib/owlcarousel/owl.carousel.min.js"></script> --}}
-    {{-- <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script> --}}
-    {{-- <script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script> --}}
-    {{-- <script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script> --}}
-
-    <!-- Contact Javascript File -->
-    {{-- <script src="mail/jqBootstrapValidation.min.js"></script> --}}
-    {{-- <script src="mail/contact.js"></script> --}}
 
     <!-- Template Javascript -->
     <script src="/assets/js/main.js"></script>

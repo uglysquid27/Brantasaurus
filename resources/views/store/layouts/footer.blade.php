@@ -62,7 +62,7 @@
     <div class="row border-top border-light py-4">
         <div class="col align-self-start">
             <p class="text-white">
-            © 2023 <a class="text-white" href="https://www.instagram.com/usfootwear_official/" target="_blank">USFootwear Team</a>. All Rights Reserved.
+            Copyright © 2023 <a class="text-white" href="https://www.instagram.com/usfootwear_official/" target="_blank">USFootwear Team</a>. All Rights Reserved.
             </p>
         </div>
         {{-- <div class="col-md-6 px-xl-0 text-center text-md-right">

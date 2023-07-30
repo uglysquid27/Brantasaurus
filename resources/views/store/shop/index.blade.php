@@ -14,6 +14,7 @@
 <!-- Page Header End -->
 
 
+
 <!-- Shop Start -->
 <div class="container-fluid pt-5">
     <div class="row px-xl-5">
@@ -22,18 +23,18 @@
                 @foreach($products as $product)
                 @if($product->quantity >0)
                 <div class="col-lg-3 pb-1 text-center">
-                    <div class="card product-item border-0 mb-4">
-                        <div class="card-header product-img position-relative overflow-hidden bg-transparent border p-0">
+                    <div class="card product-item mb-4">
+                        <div class="card-header product-img position-relative overflow-hidden bg-transparent p-0">
                             <img class="img-fluid" src="{{ asset('storage/'.$product->image) }}" alt="" style="object-fit: cover; width: 300px; height: 300px;">
                         </div>
-                        <div class="card-body border-left border-right text-center p-0 pt-4 pb-3">
+                        <div class="card-body text-center p-0 pt-4 pb-3">
                             <h6 class="text-truncate mb-3"> {{ $product->product_name }} </h6>
                             <div class="d-flex justify-content-center">
                                 <h6>Rp. {{ number_format($product->sell_price )}} </h6>
-                                <h6 class="text-muted ml-2"><del>{{ $product->price }}</del></h6>
+                                <!-- <h6 class="text-muted ml-2"><del>{{ $product->price }}</del></h6> -->
                             </div>
                         </div>
-                        <div class="card-footer d-flex justify-content-between bg-light border">
+                        <div class="card-footer d-flex justify-content-between bg-light">
                             <a href="/shop/{{ $product->slug }}" class=" text-primary p-0">
                                 <div><i class="fas fa-eye mr-1"></i>View
                                     Detail</div>
@@ -55,5 +56,6 @@
     </div>
 </div>
 <!-- Shop End -->
+
 
 @endsection
