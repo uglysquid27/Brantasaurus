@@ -8,7 +8,7 @@
 </div>
 @endif
 
-<div id="header-carousel" class="carousel slide" data-ride="carousel">
+<!-- <div id="header-carousel" class="carousel slide" data-ride="carousel">
 
 
 
@@ -48,7 +48,7 @@
             <span class="carousel-control-next-icon mb-n2"></span>
         </div>
     </a>
-</div>
+</div> -->
 
 <!-- Carousel End -->
 

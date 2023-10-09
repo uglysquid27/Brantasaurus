@@ -12,9 +12,22 @@ class Category extends Model
 
     protected $fillable = [
         'name',
-        'slug',
-        'desc',
-        'image'
+        'alamat',
+        'phone',
+        'nik',
+        'work',
+        'born',
+        'gender',
+        'batuk',
+        'bb',
+        'demam',
+        'lemas',
+        'keringat',
+        'sesak',
+        'getah',
+        'jangkit',
+        'lainnya',
+        'slug'
     ];
 
     public function getRouteKeyName()

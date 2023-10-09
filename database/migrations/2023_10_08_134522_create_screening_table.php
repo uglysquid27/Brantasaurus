@@ -13,10 +13,9 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('screenings', function (Blueprint $table) {
             $table->id();
-            $table->string('slug');
-            $table->string('name');
+            $table->string('namaLengkap');
             $table->string('alamat');
             $table->string('phone');
             $table->string('nik');
@@ -29,7 +28,6 @@ return new class extends Migration
             $table->string('lemas');
             $table->string('keringat');
             $table->string('sesak');
-            $table->string('image');
             $table->string('getah');
             $table->string('jangkit');
             $table->string('lainnya');
@@ -44,6 +42,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categories');
+        Schema::dropIfExists('screening');
     }
 };

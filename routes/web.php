@@ -16,6 +16,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\TagController;
 use App\Http\Controllers\SizeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\screeningController;
 use App\Models\Category;
 
 /*
@@ -28,7 +29,10 @@ use App\Models\Category;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('checkout', [ChekcoutController::class, 'index']);
+// Route::get('screening', [screeningController::class, 'index']);
+// Route::post('screening/store', [screeningController::class, 'store']);
+Route::resource('/screening', screeningController::class);
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
@@ -56,7 +60,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::resource('/dashboard/profile', UserController::class);
 
     //order
-    Route::get('checkout', [ChekcoutController::class, 'index']);
+   
     Route::post('place-order', [ChekcoutController::class, 'placeOrder']);
 
     //OrderDashboard

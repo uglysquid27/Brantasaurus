@@ -1,7 +1,7 @@
 @extends('store.layouts.main')
 @section('content')
 <!-- Carousel Start -->
-@if(session()->has('message'))
+<!-- @if(session()->has('message'))
 <div class="alert alert-success">
     <button type="button" class="close" data-dismiss="alert">x</button>
     {{ session()->get('message') }}
@@ -48,7 +48,7 @@
             <span class="carousel-control-next-icon mb-n2"></span>
         </div>
     </a>
-</div>
+</div> -->
 
 <!-- Carousel End -->
 
@@ -62,7 +62,8 @@
     <!-- New Arrival Start -->
     <div class="container-fluid pt-5">
         <div class="text-center mb-4">
-            <h2 class="section-title px-5"><span class="px-2">New Arrival</span></h2>
+            <h1 class="font-weight-bold px-5"><span class="px-2">Berantas Tuberkulosa</span></h1>
+            <h1 class="font-weight-bold px-5"><span class="px-2">untuk Perusahaan Sehat</span></h1>
         </div>
 
         <div class="row px-xl-5 pb-3 justify-content-center">

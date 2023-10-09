@@ -39,10 +39,23 @@ class CategoryController extends Controller
     public function store(Request $request)
     {
         $validateData = $request ->validate([
-            'name' => 'required|max:255',
             'slug' => 'required|unique:categories',
-            'desc' => 'required',
-            'image' =>'image|file|max:1024',
+            'name' => 'required|max:255',
+            'alamat' => 'required|max:255',
+            'phone' => 'required|max:255',
+            'nik' => 'required|max:255',
+            'work' => 'required|max:255',
+            'born' => 'required|max:255',
+            'gender' => 'required|max:255',
+            'batuk' => 'required|max:255',
+            'bb' => 'required|max:255',
+            'demam' => 'required|max:255',
+            'lemas' => 'required|max:255',
+            'keringat' => 'required|max:255',
+            'sesak' => 'required|max:255',
+            'getah' => 'required|max:255',
+            'jangkit' => 'required|max:255',
+            'lainnya'=> 'required',
         ]);
 
         if ($request->file('image')) {
