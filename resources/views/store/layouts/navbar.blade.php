@@ -12,10 +12,10 @@
                     </button>
 
                     <div class="navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav mx-auto py-0 justify-content-center">
+                        <div class="navbar-nav mx-auto justify-content-center pr-5">
                             <a href="/" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('/') ? 'active' : '' }}">Home</a>
-                            <a href="/shop" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">Shop</a>
-                            @if (Request::is('login') or Route::is('register'))
+                            <a href="/shop" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('shop') ? 'active' : '' }}">About</a>
+                            <!-- @if (Request::is('login') or Route::is('register'))
                             @else
                             <div class="nav-item dropdown">
                                 <a href="#" class="text-dark-footer font-weight-light nav-link dropdown-toggle" data-toggle="dropdown">Categories</a>
@@ -27,11 +27,11 @@
                                     @endforeach
                                 </div>
                             </div>
-                            @endif
+                            @endif -->
                             <a href="/contact" class="text-dark-footer font-weight-light nav-item nav-link {{ Request::is('contact') ? 'active' : '' }}">Contact</a>
                         </div>
 
-                        <div class="navbar-nav justify-content-end">
+                        <!-- <div class="navbar-nav justify-content-end">
                             <div class="nav-item dropdown">
                                 @if (Route::has('login'))
                                 @auth
@@ -52,7 +52,7 @@
                                 @endauth
                                 @endif
                             </div>
-                        </div>
+                        </div> -->
                     </div>
 
                     <!-- @if (Route::has('login'))

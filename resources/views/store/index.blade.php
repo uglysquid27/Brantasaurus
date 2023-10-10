@@ -53,65 +53,70 @@
 <!-- Carousel End -->
 
 <!-- Featured Start -->
-<div class="container-fluid pt-5">
 
-</div>
 <!-- Featured End -->
 
 
-    <!-- New Arrival Start -->
-    <div class="container-fluid pt-5">
-        <div class="text-center mb-4">
-            <h1 class="font-weight-bold px-5"><span class="px-2">Berantas Tuberkulosa</span></h1>
-            <h1 class="font-weight-bold px-5"><span class="px-2">untuk Perusahaan Sehat</span></h1>
-        </div>
+<!-- New Arrival Start -->
+<div class="container-fluid pt-5">
+    <div class="text-center mb-5">
+        <h1 class="font-weight-bold px-5"><span class="px-2">Berantas Tuberkulosa</span></h1>
+        <h1 class="font-weight-bold px-5"><span class="px-2">untuk Perusahaan Sehat</span></h1>
+    </div>
+    <div class="text-center pb-5">
+        <p class="font-weight-light fs-1 px-5"><span class="px-2">Ayo mulai sadar dengan gejala penyakit TBC, </span></p>
+        <p class="font-weight-light px-5"><span class="px-2">langkah pertama menuju kesehatan yang lebih baik.</span></p>
+    </div>
 
-        <div class="row px-xl-5 pb-3 justify-content-center">
-            @foreach($products as $product)
-            <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-                <div class="card product-item">
-                    <div class="card-header product-img position-relative overflow-hidden bg-transparent p-0">
-                        <img class="img-fluid center-block d-block mx-auto" src="{{ asset('storage/'.$product->image) }}" alt="" style="height: 300px; object-fit: cover;">
+    <div class="col-lg-12 col-md-6 col-sm-12 pb-1 text-center">
+        <a href="/screening" class="btn btn-outline-success rounded py-md-2 px-md-3">Mulai Screening</a>
+    </div>
+</div>
+
+<!-- New Arrival End -->
+
+<!-- Categories Start -->
+<div class="container mt-5">
+    <div class="row justify-content-center pt-5">
+        <div class="col-md-6">
+            <!-- Bootstrap card to hold the image -->
+            <div class="card">
+                <div class="rounded-image-container">
+                    <img src="https://dk4fkkwa4o9l0.cloudfront.net/production/uploads/article/image/1277/Artikel-Paru-dr-Tantri-RSHMCB.jpg" alt="Image" class="rounded-lg img-fluid">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Categories End -->
+
+<!--about start-->
+<div class="pt-3">
+    <div class="pt-5">
+        <div class="container-fluid pt-5">
+            <div class=" text-center pt-5">
+                <p>About us</p>
+                <h1 class=" font-weight-bold">BRANTASAURUS</h1>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-6">
+                        <!-- Image on the left -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid">
                     </div>
-                    <div class="card-body text-center p-0 pt-4 pb-3">
-                        <h6 class="text-truncate mb-3 font-weight-bold"> {{ $product->product_name }} </h6>
-                        <div class="d-flex justify-content-center">
-                            <h6 class=" font-weight-light">Rp. {{ number_format($product->sell_price) }} </h6>
-                            <!-- <h6 class="text-muted ml-2"><del>Rp. {{ $product->price }}</del></h6> -->
-                        </div>
+                    <div class="col-md-6 text-justify">
+                        <!-- Text on the right -->
+                        <p>Brantasaurus adalah sebuah aplikasi inovatif yang bertujuan untuk memudahkan self-screening (pemeriksaan mandiri) terkait tuberkulosa (TB) bagi karyawan dalam perusahaan. Tuberkulosa adalah penyakit menular yang serius dan dapat mempengaruhi kesehatan karyawan serta produktivitas mereka. Dengan Brantasaurus, perusahaan dapat memastikan bahwa karyawan memiliki akses cepat dan mudah untuk menilai risiko mereka terkait TB.</p>
+                        <a href="/screening" class="btn btn-info rounded py-md-2 px-md-3">Contact Us</a>
                     </div>
                 </div>
             </div>
-            @endforeach
-            <div class="col-lg-12 col-md-6 col-sm-12 pb-1 text-center">
-                <a href="/shop" class="btn btn-outline-dark py-md-2 px-md-3">Show More</a>
-            </div>
         </div>
     </div>
 
-    <!-- New Arrival End -->
 
-<!-- Categories Start -->
-<div class="container-fluid pt-5">
-    <div class="text-center mb-4">
-    <h1 class="text-center font-weight-semi-bold m-0">CATEGORIES</h1>
-    </div>
-    <div class="row px-xl-5 pb-3 justify-content-center">
-        @foreach($categories as $category)
-        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
-            <div class="cat-item d-flex flex-column mb-4">
-                <p class="text-right">{{ $category->product_count }}</p>
-                <a href="/shop?category={{ $category->slug }}" class="cat-img position-relative overflow-hidden mb-3">
-                    <img class="img-fluid center-block d-block mx-auto" src="{{ asset('storage/'.$category->image) }}" alt="" style="width: 300px; height: 300px; object-fit: cover;">
-                </a>
-                <h5 class="font-weight-semi-bold m-0"> {{ $category->name }} </h5>
-            </div>
-        </div>
-        @endforeach
-    </div>
 </div>
-    <!-- Categories End -->
 
-    @endsection
+@endsection
 
-    </html>
+</html>

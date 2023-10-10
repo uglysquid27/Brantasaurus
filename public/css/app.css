@@ -85,6 +85,20 @@ body {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+.brown {
+  background-color: #C8B6A6;
+  color: white; /* Text color */
+  padding: 10px 20px; /* Adjust padding as needed */
+  border: none; /* Optional: Remove border */
+  border-radius: 5px; /* Optional: Add rounded corners */
+  cursor: pointer; /* Optional: Add pointer cursor on hover */
+}
+
+/* Hover effect (optional) */
+.brown:hover {
+  background-color: #A99886; /* Change to a darker shade on hover */
+}
+
 hr {
   margin: 1rem 0;
   color: inherit;
