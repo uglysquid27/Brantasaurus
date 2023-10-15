@@ -30,14 +30,14 @@ class screeningController extends Controller
             $user = auth()->user();
             $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
             $screening = Screening::all();
-            return view('screening.index', compact('products', 'carousels', 'categories', 'cartItem', 'screening'));
+            return view('screening.create', compact('products', 'carousels', 'categories', 'cartItem', 'screening'));
         }else{
             $products = Product::select('*')->latest()->take(4)->get();
             $categories = Category::withCount('product')->get();
             $carousels = Carousel::select('*')->latest()->take(2)->get();
             $user = auth()->user();
             $screening = Screening::all();
-            return view('screening.index', compact('products', 'carousels', 'categories', 'screening'));
+            return view('screening.create', compact('products', 'carousels', 'categories', 'screening'));
         }
     }
 
@@ -53,7 +53,7 @@ class screeningController extends Controller
 
     /**
      * Store a newly created resource in storage.
-     *
+     *show
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
@@ -75,11 +75,32 @@ class screeningController extends Controller
             'sesak' => 'required|max:255',
             'getah' => 'required|max:255',
             'jangkit' => 'required|max:255',
-            'lainnya'=> 'required',
+            'lainnya'=> 'max:255',
         ]);
 
         Screening::create($validateData);
-        return redirect('/screening/index')->with('success', 'Screening Succesful');
+        if (($validateData['batuk'] === 'ya' && (
+            $validateData['bb'] === 'ya' && $validateData['demam'] === 'ya' ||
+            $validateData['bb'] === 'ya' && $validateData['lemas'] === 'ya' ||
+            $validateData['bb'] === 'ya' && $validateData['keringat'] === 'ya' ||
+            $validateData['bb'] === 'ya' && $validateData['sesak'] === 'ya' ||
+            $validateData['bb'] === 'ya' && $validateData['getah'] === 'ya' ||
+            $validateData['demam'] === 'ya' && $validateData['lemas'] === 'ya' ||
+            $validateData['demam'] === 'ya' && $validateData['keringat'] === 'ya' ||
+            $validateData['demam'] === 'ya' && $validateData['sesak'] === 'ya' ||
+            $validateData['demam'] === 'ya' && $validateData['getah'] === 'ya' ||
+            $validateData['lemas'] === 'ya' && $validateData['keringat'] === 'ya' ||
+            $validateData['lemas'] === 'ya' && $validateData['sesak'] === 'ya' ||
+            $validateData['lemas'] === 'ya' && $validateData['getah'] === 'ya' ||
+            $validateData['keringat'] === 'ya' && $validateData['sesak'] === 'ya' ||
+            $validateData['keringat'] === 'ya' && $validateData['getah'] === 'ya' ||
+            $validateData['sesak'] === 'ya' && $validateData['getah'] === 'ya' 
+            )) || $validateData['jangkit'] === 'ya') {
+            return view('screening.bad')->with('success', 'Condition 1 Met');
+        } else {
+            // Redirect to a different route if the condition is not met
+            return view('screening.good')->with('success', 'Condition 2 Met');
+        }
     }
 
     /**
@@ -90,9 +111,75 @@ class screeningController extends Controller
      */
     public function show(Screening $category)
     {
-        return view('screning.show', [
-            'category' => $category
-        ]);
+        if(Auth::id()){
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            $screening = Screening::all();
+            return view('screening.bad', compact('products', 'carousels', 'categories', 'cartItem', 'screening'));
+        }else{
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $screening = Screening::all();
+            return view('screening.bad', compact('products', 'carousels', 'categories', 'screening'));
+        }
+    }
+
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function bad()
+    {
+        if(Auth::id()){
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            $screening = Screening::all();
+            return view('screening.bad', compact('products', 'carousels', 'categories', 'cartItem', 'screening'));
+        }else{
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $screening = Screening::all();
+            return view('screening.bad', compact('products', 'carousels', 'categories', 'screening'));
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\Category  $category
+     * @return \Illuminate\Http\Response
+     */
+    public function good()
+    {
+        if(Auth::id()){
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $cartItem = Cart::where('user_id', $user->id)->sum('quantity');
+            $screening = Screening::all();
+            return view('screening.good', compact('products', 'carousels', 'categories', 'cartItem', 'screening'));
+        }else{
+            $products = Product::select('*')->latest()->take(4)->get();
+            $categories = Category::withCount('product')->get();
+            $carousels = Carousel::select('*')->latest()->take(2)->get();
+            $user = auth()->user();
+            $screening = Screening::all();
+            return view('screening.good', compact('products', 'carousels', 'categories', 'screening'));
+        }
     }
 
     /**
@@ -103,7 +190,7 @@ class screeningController extends Controller
      */
     public function edit(Screening $category)
     {
-        return view('screning.edit', [
+        return view('screening.edit', [
             'category' => $category
         ]);
     }

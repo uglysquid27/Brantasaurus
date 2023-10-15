@@ -30,7 +30,7 @@ return new class extends Migration
             $table->string('sesak');
             $table->string('getah');
             $table->string('jangkit');
-            $table->string('lainnya');
+            $table->string('lainnya')->nullable();
             $table->timestamps();
         });
     }

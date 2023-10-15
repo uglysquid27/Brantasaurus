@@ -5665,6 +5665,10 @@ button.close {
     border: 0;
 }
 
+#screeningFormSection {
+    display: none;
+}
+
 a.close.disabled {
     pointer-events: none;
 }
@@ -10091,6 +10095,21 @@ a.text-dark:focus {
         width: 43%;
         opacity: 0,92;
     }
+    
+    .pattern {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+      }
+    
+      .dot {
+        width: 10px;
+        height: 10px;
+        background-color: black;
+        margin: 5px;
+      }
 
 
 }

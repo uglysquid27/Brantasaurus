@@ -109,6 +109,131 @@
         @endforeach
     </div>
 </div>
+
+<!--symptom start-->
+<div class="pt-3">
+    <div class="pt-5">
+        <div class="container-fluid pt-5">
+            <div class="text-center pt-5">
+                <p>What are the</p>
+                <h1 class="font-weight-bold">SYMPTOMS</h1>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Image 1 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModal1">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Image 2 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModal2">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Image 3 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModal3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modals for each image -->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the first image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image 1</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the second image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image 2</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the third image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image 3</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--symptomp end--->
+
+<!--how to start-->
+<div class="pt-3">
+    <div class="pt-5">
+        <div class="container-fluid pt-5">
+            <div class="text-center pt-5">
+                <h1 class="font-weight-bold">WHAT TO DO</h1>
+            </div>
+            <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4">
+                        <!-- Image 1 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModalhow1">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Image 2 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModalhow2">
+                    </div>
+                    <div class="col-md-4">
+                        <!-- Image 3 with modal trigger -->
+                        <img src="https://www.mindinventory.com/blog/wp-content/uploads/2022/10/web-app.png" alt="Image" class="rounded-lg img-fluid" data-toggle="modal" data-target="#myModalhow3">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalhow1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the first image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image g1</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalhow2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the second image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image 2</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModalhow3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <!-- Add your content for the third image here -->
+            <div class="modal-body text-center">
+                <p>Content for Image 3</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!--how to end-->
     <!-- Categories End -->
 
     @endsection

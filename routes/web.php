@@ -33,10 +33,11 @@ Route::get('checkout', [ChekcoutController::class, 'index']);
 // Route::get('screening', [screeningController::class, 'index']);
 // Route::post('screening/store', [screeningController::class, 'store']);
 Route::resource('/screening', screeningController::class);
+// Route::resource('/good', [screeningController::class, 'good']);
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
 
-    //Carousel
+    //Carousel[]
     Route::get('/dashboard/carousel/checkSlug', [CarouselController::class, 'checkSlug']);
     Route::resource('/dashboard/carousel', CarouselController::class);
     
